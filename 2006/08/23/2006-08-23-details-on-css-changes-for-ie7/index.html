@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://chenz.net">
-  <title>All Things Data</title>
+  <title>Details on CSS changes for IE7 | All Things Data</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="All Things Data">
-<meta property="og:url" content="http://chenz.net/index.html">
+  <meta name="description" content="IEBlog has a good post about CSS changes for IE7 recently. This might be very helpful for changing your site for IE7.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Details on CSS changes for IE7">
+<meta property="og:url" content="http://chenz.net/2006/08/23/2006-08-23-details-on-css-changes-for-ie7/index.html">
 <meta property="og:site_name" content="All Things Data">
+<meta property="og:description" content="IEBlog has a good post about CSS changes for IE7 recently. This might be very helpful for changing your site for IE7.">
+<meta property="og:updated_time" content="2017-09-22T22:47:57.479Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="All Things Data">
+<meta name="twitter:title" content="Details on CSS changes for IE7">
+<meta name="twitter:description" content="IEBlog has a good post about CSS changes for IE7 recently. This might be very helpful for changing your site for IE7.">
   
     <link rel="alternative" href="/atom.xml" title="All Things Data" type="application/atom+xml">
   
@@ -149,92 +153,135 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2017-08-31-sql-error-3283-severity-16-state-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-2006-08-23-details-on-css-changes-for-ie7" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2403" target="_blank" itemprop="url">SQL Error: 3283, Severity: 16, State: 1</a>
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=661" target="_blank" itemprop="url">Details on CSS changes for IE7</a>
   </h1>
 
         
-        <a href="/2017/08/31/2017-08-31-sql-error-3283-severity-16-state-1/" class="archive-article-date">
-  	<time datetime="2017-09-01T06:06:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
+        <a href="/2006/08/23/2006-08-23-details-on-css-changes-for-ie7/" class="archive-article-date">
+  	<time datetime="2006-08-24T06:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2006-08-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>When I tried to restore a database backup to a new server with SQL Server 2008 R2, I got this weird message - _<strong>The file “mydb_log” failed to initialize correctly. Examine the error logs for more details.” Error: 3283, Severity: 16, State: 1.</strong> _I suspect the backup file was corrected. So I took another backup from the source. Tried the restore again. But it failed again with the same exact message. So I did some research. Found out the source database turned on TDE before, but it got turned off. It is a bug Microsoft still didn’t fix. I had to import the Certificate which was used for TDE to the new SQL Server. Then did restore again. It was successful. Now learned another trick.</p>
-<pre><code>&lt;span class=&quot;kwrd&quot;&gt;USE&lt;/span&gt; master; 
-&lt;span class=&quot;kwrd&quot;&gt;GO&lt;/span&gt; 
+        <p><a href="http://blogs.msdn.com/ie/" target="_blank" rel="external">IEBlog</a> has a good post about <a href="http://blogs.msdn.com/ie/archive/2006/08/22/712830.aspx" target="_blank" rel="external">CSS changes for IE7</a> recently. This might be very helpful for changing your site for IE7.</p>
 
-&lt;span class=&quot;kwrd&quot;&gt;CREATE&lt;/span&gt; MASTER &lt;span class=&quot;kwrd&quot;&gt;KEY&lt;/span&gt; ENCRYPTION &lt;span class=&quot;kwrd&quot;&gt;BY&lt;/span&gt; PASSWORD = N&lt;span class=&quot;str&quot;&gt;&apos;Passw0rd!&apos;&lt;/span&gt;; 
-&lt;span class=&quot;kwrd&quot;&gt;GO&lt;/span&gt;
-
-
-&lt;span class=&quot;kwrd&quot;&gt;CREATE&lt;/span&gt; CERTIFICATE TDECert
-&lt;span class=&quot;kwrd&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;FILE&lt;/span&gt; = N&lt;span class=&quot;str&quot;&gt;&apos;D:\TDECert.certbak&apos;&lt;/span&gt;
-&lt;span class=&quot;kwrd&quot;&gt;WITH&lt;/span&gt; PRIVATE &lt;span class=&quot;kwrd&quot;&gt;KEY&lt;/span&gt;
-( &lt;span class=&quot;kwrd&quot;&gt;FILE&lt;/span&gt; = N&lt;span class=&quot;str&quot;&gt;&apos;D:\TDECert.pvkbak&apos;&lt;/span&gt;
-, DECRYPTION &lt;span class=&quot;kwrd&quot;&gt;BY&lt;/span&gt; PASSWORD = N&lt;span class=&quot;str&quot;&gt;&apos;Passw0rd!&apos;&lt;/span&gt;
-);
-GO
-</code></pre>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Database Restore</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL Server 2008 R2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/31/2017-08-31-sql-error-3283-severity-16-state-1/">展开全文 >></a>
-        </p>
       
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://chenz.net/2006/08/23/2006-08-23-details-on-css-changes-for-ie7/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2006/08/24/2006-08-24-an-introduction-to-ajax-techniques-and-frameworks-for-asp-net/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          An Introduction to AJAX Techniques and Frameworks for ASP.NET
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2006/08/23/2006-08-23-use-clickonce-for-vb6-program/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Use ClickOnce for VB6 Program</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -254,820 +301,14 @@ GO
 
 
 
-
-  
-    <article id="post-2016-07-21-asp-net-web-tools-preview-2-for-dotnetcore-on-vs2015-errors" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2391" target="_blank" itemprop="url">ASP.NET Web Tools Preview 2 for DotNetCore on VS2015 ERRORs</a>
-  </h1>
-
-        
-        <a href="/2016/07/21/2016-07-21-asp-net-web-tools-preview-2-for-dotnetcore-on-vs2015-errors/" class="archive-article-date">
-  	<time datetime="2016-07-22T05:21:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>When I was trying to install ASP.NET Web Tools Preview 2 for DotNetCore on Visual Studio 2015, I got this error message. I have installed VS2015 Update 3 as required. </p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><a href="http://chenz.azurewebsites.net/wp-content/uploads/2016/07/image.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2016/07/image_thumb.png" alt="image"></a></h3><p>Then I followed the instruction to repair VS2015 Update 3. Still had the same error. I even uninstalled VS2015 completely. Then installed VS2015 again. But it was still the same. After searching online a little bit, looks like this is not a rare issue. And found out there are actually some options you can pass to the installation program. And solved this error.</p>
-<p>The installation file is: <strong>DotNetCore.1.0.0-VS2015Tools.Preview2.exe. </strong>If you run:</p>
-<table border="1"> <tbody> <tr><br><td><br><br>    DotNetCore.1.0.0-VS2015Tools.Preview2.exe /?<br><br><br></td></tr></tbody></table>
-
-
-<p>You can see some options like this:</p>
-<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2016/07/image-1.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2016/07/image_thumb-1.png" alt="image"></a></p>
-<p>### </p>
-<p>It still doesn’t seems to have an option for solving this error. But you can run this also with parameter SKIP_VSU_CHECK=1:</p>
-<table border="1"><br><tbody><br><tr><br><br><td><br><br>    DotNetCore.1.0.0-VS2015Tools.Preview2.exe SKIP_VSU_CHECK=1<br><br><br></td></tr></tbody></table>
-
-
-<p>Now the magic just happened. No more errors. <img src="http://chenz.azurewebsites.net/wp-content/uploads/2016/07/wlEmoticon-smile.png" alt="Smile"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ASPNET</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DotNetCore</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">VS2015</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Net-Framework//" class="article-tag-list-link color5">.Net Framework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Net-Framework/DotNetCore//" class="article-tag-list-link color1">DotNetCore</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Net-Framework/DotNetCore/Visual-Studio//" class="article-tag-list-link color4">Visual Studio</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/07/21/2016-07-21-asp-net-web-tools-preview-2-for-dotnetcore-on-vs2015-errors/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2016-07-14-sql-server-2014-service-pack-2-is-released" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2321" target="_blank" itemprop="url">SQL Server 2014 Service pack 2 is released</a>
-  </h1>
-
-        
-        <a href="/2016/07/14/2016-07-14-sql-server-2014-service-pack-2-is-released/" class="archive-article-date">
-  	<time datetime="2016-07-15T06:20:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>SQL Server 2014 SP2 is just released recently. You can download it from <a href="https://support.microsoft.com/en-us/kb/3171021?sd=rss&amp;spid=17645" target="_blank" rel="external">here</a>. It includes all the fixes from CU1 to CU7. There are a couple interesting things added in SP2:</p>
-<ul>
-<li><a href="https://support.microsoft.com/en-us/kb/3177838" target="_blank" rel="external">DBCC CLONEDATABASE (Transact-SQL) is introduced in SQL Server 2014 Service Pack 2</a>: this is very useful for creating a quick clone of the database with statistics copied from the original database, but without the data. Then we can detach and move it to development server for doing the query tuning and performance trouble shooting.</li>
-<li><a href="https://support.microsoft.com/en-us/kb/3173157" target="_blank" rel="external">Adds a stored procedure for the manual cleanup of the change tracking side table in SQL Server 2014 SP2</a>: Cheer for releasing the storage headaches.</li>
-<li><a href="https://support.microsoft.com/en-us/kb/3107401" target="_blank" rel="external">New query memory grant options are available (min_grant_percent and max_grant_percent) in SQL Server 2012:</a> finally we got this in SQL Server 2014.</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Service Pack 2</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server/SQL-Server-2014//" class="article-tag-list-link color1">SQL Server 2014</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/07/14/2016-07-14-sql-server-2014-service-pack-2-is-released/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2016-07-01-sql-server-updates-and-beyond" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2291" target="_blank" itemprop="url">SQL Server updates and beyond</a>
-  </h1>
-
-        
-        <a href="/2016/07/01/2016-07-01-sql-server-updates-and-beyond/" class="archive-article-date">
-  	<time datetime="2016-07-02T05:59:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Microsoft has changed the way how service packs and (CU) cumulative updates for SQL Server are released. Now installing CU is recommended as important as service packs. And service packs won’t be released regularly as before.</p>
-<ul>
-<li><strong>Each new cumulative update (CU) contains all the fixes that were included with the previous CU for the installed version/Service Pack of SQL Server. </strong></li>
-<li><strong>Microsoft recommends ongoing, proactive installation of CUs as they become available:</strong><ul>
-<li><strong>SQL Server CUs are certified to the same levels as Service Packs, and should be installed at the same level of confidence. </strong></li>
-<li><strong>Historical data shows that a significant number of support cases involve an issue that has already been addressed in a released CU. </strong></li>
-<li><strong>CUs may contain added value over and above hotfixes. This includes supportability, manageability, and reliability updates.</strong></li>
-</ul>
-</li>
-<li><strong>Just as for SQL Server service packs, we recommend that you test CUs before you deploy them to production environments.</strong></li>
-</ul>
-<p>BTW, I found another <a href="http://sqlserverupdates.com/" target="_blank" rel="external">SQL Server Updates</a> information site which is maintained by Brent Ozar Unlimited.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server/SQL-Server-2012//" class="article-tag-list-link color1">SQL Server 2012</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server/SQL-Server-2012/SQL-Server-2014//" class="article-tag-list-link color1">SQL Server 2014</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server/SQL-Server-2012/SQL-Server-2014/SQL-Server-2016//" class="article-tag-list-link color1">SQL Server 2016</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/07/01/2016-07-01-sql-server-updates-and-beyond/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2015-05-06-sql-server-2016-is-coming" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2271" target="_blank" itemprop="url">SQL Server 2016 is coming</a>
-  </h1>
-
-        
-        <a href="/2015/05/06/2015-05-06-sql-server-2016-is-coming/" class="archive-article-date">
-  	<time datetime="2015-05-06T07:31:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Microsoft just announced <a href="http://blogs.technet.com/b/dataplatforminsider/archive/2015/05/04/sql-server-2016-public-preview-coming-this-summer.aspx" target="_blank" rel="external">SQL Server 2016 public preview coming this summer</a>. A couple long waiting features will be really interesting:</p>
-<ul>
-<li><strong>Always Encrypted</strong>: Banks, Health Care and insurance companies will be happy.</li>
-<li><strong>Stretch Database</strong>: DBA will be happy.</li>
-<li><strong>Real-time Operational Analytics &amp; In-Memory OLTP</strong></li>
-<li><strong>Built-in Advanced Analytics, PolyBase and Mobile BI</strong></li>
-<li><strong>Additional security enhancements for Row-level Security and Dynamic Data Masking to round out our security investments with Always Encrypted. </strong></li>
-<li><strong>Improvements to AlwaysOn for more robust availability and disaster recovery with multiple synchronous replicas and secondary load balancing. </strong></li>
-<li><strong>Native JSON support to offer better performance and support for your many types of your data. </strong></li>
-<li><strong>SQL Server Enterprise Information Management (EIM) tools and Analysis Services get an upgrade in performance, usability and scalability. </strong></li>
-<li><strong>Faster hybrid backups, high availability and disaster recovery scenarios to backup and restore your on-premises databases to Azure and place your SQL Server AlwaysOn secondaries in Azure.</strong></li>
-</ul>
-<p>Hooray! Can’t wait to download it.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server/SQL-Server-2016//" class="article-tag-list-link color1">SQL Server 2016</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/05/06/2015-05-06-sql-server-2016-is-coming/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2014-08-20-generate-sql-script-to-restore-all-transaction-logs-after-last-database-backup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2251" target="_blank" itemprop="url">Generate SQL Script to Restore all Transaction Logs After Last Database Backup</a>
-  </h1>
-
-        
-        <a href="/2014/08/20/2014-08-20-generate-sql-script-to-restore-all-transaction-logs-after-last-database-backup/" class="archive-article-date">
-  	<time datetime="2014-08-21T00:54:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you have to reinitialize the log shipping for a database which is doing log backup every 5 minutes, there are probably piles of log backup files need to be restored after restoring database backup nightly. A little bit crazy if you have to manually go through all files. This is a helpful script to generate the SQL script for you to do all the log restoral.</p>
-<pre><code>&lt;span class=&quot;kwrd&quot;&gt;SELECT&lt;/span&gt;  &lt;span class=&quot;str&quot;&gt;&apos;RESTORE LOG [&apos;&lt;/span&gt; + database_name + &lt;span class=&quot;str&quot;&gt;&apos;] FROM DISK=&apos;&lt;/span&gt;&lt;span class=&quot;str&quot;&gt;&apos;&apos;&lt;/span&gt;
-        + physical_device_name + &lt;span class=&quot;str&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;str&quot;&gt;&apos; WITH NORECOVERY&apos;&lt;/span&gt;
-&lt;span class=&quot;kwrd&quot;&gt;FROM&lt;/span&gt;    msdb.dbo.backupset a
-        &lt;span class=&quot;kwrd&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;JOIN&lt;/span&gt; msdb.dbo.backupmediafamily b &lt;span class=&quot;kwrd&quot;&gt;ON&lt;/span&gt; a.media_set_id = b.media_set_id
-&lt;span class=&quot;kwrd&quot;&gt;WHERE&lt;/span&gt;   database_name = &lt;span class=&quot;str&quot;&gt;&apos;laFileStore&apos;&lt;/span&gt;
-        &lt;span class=&quot;kwrd&quot;&gt;AND&lt;/span&gt; type = &lt;span class=&quot;str&quot;&gt;&apos;L&apos;&lt;/span&gt;
-        &lt;span class=&quot;kwrd&quot;&gt;AND&lt;/span&gt; backup_start_date &gt;= ( &lt;span class=&quot;kwrd&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;TOP&lt;/span&gt; 1
-                                            backup_start_date
-                                   &lt;span class=&quot;kwrd&quot;&gt;FROM&lt;/span&gt;     msdb.dbo.backupset
-                                   &lt;span class=&quot;kwrd&quot;&gt;WHERE&lt;/span&gt;    database_name = &lt;span class=&quot;str&quot;&gt;&apos;laFileStore&apos;&lt;/span&gt;
-                                            &lt;span class=&quot;kwrd&quot;&gt;AND&lt;/span&gt; type = &lt;span class=&quot;str&quot;&gt;&apos;D&apos;&lt;/span&gt;
-                                   &lt;span class=&quot;kwrd&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;BY&lt;/span&gt; backup_start_date &lt;span class=&quot;kwrd&quot;&gt;DESC&lt;/span&gt;
-                                 )
-&lt;span class=&quot;kwrd&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;BY&lt;/span&gt; a.backup_start_date 
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL//" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/08/20/2014-08-20-generate-sql-script-to-restore-all-transaction-logs-after-last-database-backup/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2014-04-25-uselegacyv2runtimeactivationpolicy-fix-for-crystal-report-on-net-framework-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2231" target="_blank" itemprop="url">useLegacyV2RuntimeActivationPolicy fix for Crystal Report on .Net Framework 4</a>
-  </h1>
-
-        
-        <a href="/2014/04/25/2014-04-25-uselegacyv2runtimeactivationpolicy-fix-for-crystal-report-on-net-framework-4/" class="archive-article-date">
-  	<time datetime="2014-04-26T06:45:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>We just upgraded some apps from .Net Framework 3.5 sp1 to .Net Framework 4. Some Crystal reports got this error.</p>
-<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/04/clip_image002.jpg" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/04/clip_image002_thumb.jpg" alt="clip_image002"></a></p>
-<p>After Bingo a little bit, found <a href="http://search.sap.com/ui/notes?id=0001525432&amp;boj=/sap/bc/bsp/spn/scn_bosap/notes.do?access=69765F6D6F64653D3939382669765F7361706E6F7465735F6E756D6265723D30303031353235343332&amp;ssocompatible" target="_blank" rel="external">this note</a> on SAP site. It is because of the mixed mode dll issue. Have to put this configuration in the config file:</p>
-<p>**<startup uselegacyv2runtimeactivationpolicy="true">  </startup></p>
-<p><supportedruntime version="v4.0"><br>**</supportedruntime></p>
-<p>And this basically is for compatibility of mixed mode dlls. <a href="http://web.archive.org/web/20130128072944/http://www.marklio.com/marklio/PermaLink,guid,ecc34c3c-be44-4422-86b7-900900e451f9.aspx" target="_blank" rel="external">This blog post</a> has very detail info about this flag.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Net-Framework//" class="article-tag-list-link color5">.Net Framework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Net-Framework/Net-Framework-2-0//" class="article-tag-list-link color4">.Net Framework 2.0</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/04/25/2014-04-25-uselegacyv2runtimeactivationpolicy-fix-for-crystal-report-on-net-framework-4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2014-04-24-upgrade-windows-server-2008-r2-standard-to-enterprise-without-media" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2191" target="_blank" itemprop="url">Upgrade Windows Server 2008 R2 Standard to Enterprise without Media</a>
-  </h1>
-
-        
-        <a href="/2014/04/24/2014-04-24-upgrade-windows-server-2008-r2-standard-to-enterprise-without-media/" class="archive-article-date">
-  	<time datetime="2014-04-25T06:33:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>We have a VM which is running Windows Server 2008 R2 Standard with 32GB RAM. Recently we have to add more RAM to it to improve SQL Server performance. Another 32GB RAM is added through VM configuration. But since it is a Windows Server 2008 R2 standard edition which has a limitation of only being able to use 32GB RAM MAX, it still can’t see the full 64GB. Found out we have to upgrade the edition to Enterprise in order to fully utilize 64GB RAM. By following this blog post for <a href="http://blogs.technet.com/b/server_core/archive/2009/10/14/upgrading-windows-server-2008-r2-without-media.aspx" target="_blank" rel="external">upgrading Windows Server 2008 R2 without media</a>, I ran the script to initiate the upgrade:</p>
-<p><strong>DISM /online /Set-Edition:ServerEnterprise /ProductKey:XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</strong></p>
-<p>I used the right MAK license key for Windows Server 2008 R2 Enterprise. But the upgrade was failed. The error message is something like this:</p>
-<p><em>Error: 1605</em></p>
-<p><em>The specified product key is not valid for the target edition.<br>Run this command again with a product key specific to the target edition.</em></p>
-<p><em>The DISM log file can be found at C:\Windows\Logs\DISM\dism.log </em></p>
-<p><em>For example if upgrading to Enterprise and using a MAK key, the DISM log would contain the following entry.</em></p>
-<p><em>dism /online /Set-Edition:ServerEnterprise /ProductKey:[abcde-abcde-abcde-abcde-abcde]</em></p>
-<blockquote><em>Error DISM DISM Transmog Provider: PID=5728 Product key is keyed to [], but user requested transmog to [ServerEnterprise] - CTransmogManager::ValidateTransmogrify</em><br>&gt;<br>&gt; CTransmogManager::ValidateTransmogrify<br>&gt;<br>&gt; <em>Error DISM DISM Transmog Provider: PID=3880 [Upgrading system]: The specified product key is not valid for the target edition.</em><br>&gt;<br>&gt; <em>Run this command again with a product key specific to the target edition.</em><br>&gt;<br>&gt; <em>[hrError=0x80070645] - CTransmogManager::EventError</em><br>&gt;<br>&gt; <em>Warning DISM DISM Transmog Provider: PID=3880 The selected OS <em>cannot</em> upgrade to [ServerEnterprise] - CTransmogManager::TransmogrifyWorker</em><br>&gt;<br>&gt; <em>Error DISM DISM Transmog Provider: PID=3880 Failed to Upgrade! - CTransmogManager::TransmogrifyWorker(hr:0x80070645)</em><br>&gt;<br>&gt; <em>Error DISM DISM Transmog Provider: PID=3880 Failed to upgrade! - CTransmogManager::ExecuteCmdLine(hr:0x80070645)</em><br>&gt;<br>&gt; </blockquote>
-
-<p>I Bingo a little bit about this error message. Found <a href="http://support.microsoft.com/kb/2652825/en-us" target="_blank" rel="external">a KB which is exactly for it</a>. Looks like I can’t use our MAK key to do it since the key works for multiple editions. DISM doesn’t know what to do with it. I have to get a KMS Client Setup Key for Windows Server 2008 R2 Enterprise to do the upgrade first. So I get the KMS key from <a href="http://technet.microsoft.com/en-us/library/ff793421.aspx" target="_blank" rel="external">here</a> which is <strong>489J6-VHDMP-X63PK-3K798-CPX3Y.</strong></p>
-<p>Then I ran the upgrade script again. It worked this time. After the upgrade and reboot, I have to use these two script to change the product key to my correct MAK key, and activate windows. Otherwise, windows will show it is not a genuine windows installation. </p>
-<p><strong>cscript.exe %windir%\system32\slmgr.vbs /IPK XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</strong></p>
-<p><strong>cscript.exe %windir%\system32\slmgr.vbs /ato</strong></p>
-<p>After all these were done, my VM is able to see and use full 64GB RAM right now. Cheers!</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Windows-Server//" class="article-tag-list-link color5">Windows Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Windows-Server/Windows-Server-2008-R2//" class="article-tag-list-link color3">Windows Server 2008 R2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/04/24/2014-04-24-upgrade-windows-server-2008-r2-standard-to-enterprise-without-media/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2014-04-02-the-older-version-of-skype-cannot-be-removed" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2161" target="_blank" itemprop="url">The older version of Skype cannot be removed…</a>
-  </h1>
-
-        
-        <a href="/2014/04/02/2014-04-02-the-older-version-of-skype-cannot-be-removed/" class="archive-article-date">
-  	<time datetime="2014-04-03T02:37:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-04-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I got a notification for upgrading to newer version when opening Skype on my Windows 8.1. But when I chose to upgrade, it stopped at this error complaining “<strong>The older version of Skype cannot be removed. Contact your technical support group</strong>.” Ok, well. What if I manually remove the old version from Windows Programs and Features? Boom, another stop error “<strong>Can’t find Skype.msi in folder C:\ProgramData\Skype{4E76FF7E-AEBA-4C87-B788-CD47E5425B9D} for the corresponding version</strong>”. Can’t continue the upgrade process. </p>
-<p>After some Bingle, looks like this is a common issue after installing certain previous version of Skype. According to this article, I have to <a href="http://community.skype.com/t5/Windows-desktop-client/How-to-update-Skype-without-using-any-Skype-installer/m-p/707359" target="_blank" rel="external">update Skype without using any Skype installer</a>. But when I downloaded the Skype full installation file directly from Skype.com, it is a Skype installer exe. I was not able to find the msi file as the solution mentioned. Then I just thought how about going to the folder windows installer was complaining about. Bingo, found another folder in <strong>C:\ProgramData\Skype{7A3C7E05-EE37-47D6-99E1-2EB05A3DA3F7}.</strong> And the new version of Skype.msi is right there. Then I just used 7-zip to open this msi as an archive. And copied Skype.exe to overwrite the old version of exe in the program files folder. And the upgrade is just done! Started the Skype, checked the version. And it shows the new version number.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Skype//" class="article-tag-list-link color1">Skype</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Skype/Windows//" class="article-tag-list-link color3">Windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/04/02/2014-04-02-the-older-version-of-skype-cannot-be-removed/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2014-04-01-enterprise-library-5-0-visual-studio-configuration-editor-conflicts-with-sql-server-management-studio-2012-and-up" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2141" target="_blank" itemprop="url">Enterprise Library 5.0 Visual Studio configuration editor conflicts with SQL Server Management Studio 2012 and up</a>
-  </h1>
-
-        
-        <a href="/2014/04/01/2014-04-01-enterprise-library-5-0-visual-studio-configuration-editor-conflicts-with-sql-server-management-studio-2012-and-up/" class="archive-article-date">
-  	<time datetime="2014-04-02T06:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I used Microsoft Enterprise Library 5.0 in a lot of project. After I upgraded SQL Server installation on my workstation to SQL Server 2012, I got this error every time trying to open a new query window in SSMS 2012.</p>
-<p><strong><em>“The ‘Microsoft.Practices.EnterpriseLibrary.Configuration.Design.VisualStudioIntegration2010Package, Microsoft.Practices.EnterpriseLibrary.Configuration.Design.VisualStudioIntegration2010, Version=1.0.0.0, Culture=netutral, PublicKeyToken=null’ package did not load correctly. The problem mayhave been cuased by a configuration change or by the installation of another extension. You can get more information by running the application together with the /log parameter on the command line, and then examining the file …\AppDate\Roaming\Microsoft\AppEnv\10.0\ActivityLog.xml’. Continue to show this error message?”</em></strong></p>
-<p>Even I can disabled and hide it for next time after it shows up at the first time, it is still very annoying. I Bingle a little bit. Looks like there was a <a href="https://connect.microsoft.com/SQLServer/feedback/details/620532/error-message-on-new-query-window-opening" target="_blank" rel="external">Microsoft Connect item</a> on SQL Server already. But the item is closed and no fix available. The only workaround is:</p>
-<p><strong>Remove the VisualStudio 2010 integration from Microsoft Enterprise Library 5.0 Optional Update 1 installation. Then if you need the Visual Studio 2010 integration, install the EnterpriseLibrary Configuration extension from Microsoft via the Extension Manager in VS2010.</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server/Visual-Studio//" class="article-tag-list-link color4">Visual Studio</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/04/01/2014-04-01-enterprise-library-5-0-visual-studio-configuration-editor-conflicts-with-sql-server-management-studio-2012-and-up/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1090,8 +331,8 @@ GO
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
