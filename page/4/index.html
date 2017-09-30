@@ -141,6 +141,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2013-09-06-connect-to-hidden-sql-server-instance-in-ssms" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1111" target="_blank" itemprop="url">Connect To Hidden SQL Server Instance in SSMS</a>
+  </h1>
+
+        
+        <a href="/2013/09/06/2013-09-06-connect-to-hidden-sql-server-instance-in-ssms/" class="archive-article-date">
+  	<time datetime="2013-09-07T01:47:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Some products install a hidden SQL server instance (usually express edition). If you check in Sql Server Configuration Manager, you can see SQL instance name like ‘<strong>MICROSOFT##SSEE</strong>’. But if you want to connect to it using SSMS (SQL Server Management Studio), you won’t be able to connect to it because the instance is set to hidden. Sometime, we have to connect to it to do some maintenance work as a DBA. So here is the way to unhide it. In SQL Server Configuration Manager, expand SQL Server Network Configuration, right click on “<strong>Protocols for MICROSOFT##SSEE</strong>”, choose Properties from the context menu. In the Flags tab of the Properties dialog, you can see the Hide Instance flag is “<strong>Yes</strong>”, just set it to “<strong>No</strong>”. Please see the following screen shot.</p>
+<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2013/09/image.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2013/09/image_thumb.png" alt="image"></a></p>
+<p>You have to restart the SQL server service for this instance to make this flag effective. You will be able to connect to it in SSMS successfully now. Cheers!</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/09/06/2013-09-06-connect-to-hidden-sql-server-instance-in-ssms/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2013-08-29-scripting-sql-linked-servers-using-powershell-script" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1024,82 +1098,6 @@
 
 
   
-    <article id="post-2013-03-14-goodbye-google-reader" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=141" target="_blank" itemprop="url">Goodbye, Google Reader</a>
-  </h1>
-
-        
-        <a href="/2013/03/14/2013-03-14-goodbye-google-reader/" class="archive-article-date">
-  	<time datetime="2013-03-14T07:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-03-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>One of my favorite Google tools - <a href="http://googlereader.blogspot.com/2013/03/powering-down-google-reader.html" target="_blank" rel="external">Google Reader</a> will be closed soon. Google Note was gone. Now comes powering down Google Reader. I have to find another tool to keep track of wonderful IT news…</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Google-Reader//" class="article-tag-list-link color4">Google Reader</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Google-Reader/Google-Service//" class="article-tag-list-link color5">Google Service</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/03/14/2013-03-14-goodbye-google-reader/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1222,6 +1220,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL Server 2008 R2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Blog</a>
               </li>
             
             <div class="clearfix"></div>

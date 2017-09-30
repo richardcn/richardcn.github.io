@@ -141,6 +141,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2008-07-11-master-windows-powershell-in-one-week-during-lunch-break" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=36" target="_blank" itemprop="url">Master Windows PowerShell in one week during lunch break</a>
+  </h1>
+
+        
+        <a href="/2008/07/11/2008-07-11-master-windows-powershell-in-one-week-during-lunch-break/" class="archive-article-date">
+  	<time datetime="2008-07-11T12:11:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Powershelllive.com has a very good serial of articles for <a href="http://powershelllive.com/blogs/lunch/default.aspx" target="_blank" rel="external">learning Windows PowerShell</a>.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PowerShell//" class="article-tag-list-link color1">PowerShell</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2008/07/11/2008-07-11-master-windows-powershell-in-one-week-during-lunch-break/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2008-07-10-using-common-table-expression-in-sql-2005" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -863,85 +935,6 @@ Check Digit = 1 (110 minus 109)
 
 
   
-    <article id="post-2008-03-24-sql-2005-64bit-with-linked-server-sql-2000-query-issues" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=291" target="_blank" itemprop="url">SQL 2005 64bit with Linked Server SQL 2000 Query Issues</a>
-  </h1>
-
-        
-        <a href="/2008/03/24/2008-03-24-sql-2005-64bit-with-linked-server-sql-2000-query-issues/" class="archive-article-date">
-  	<time datetime="2008-03-24T23:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>We just upgrade our main DB from SQL 2k to SQL 2k5 64bit. But we still need to use linked server to link to another SQL 2k for running some queries. But I get the following error when trying to execute some query:  </p>
-<p>OLE DB provider “SQLNCLI” for linked server “SQL 2k Server” returned message “Communication link failure”.<br>Msg 10054, Level 16, State 1, Line 0TCP Provider: An existing connection was forcibly closed by the remote host.Msg 18456, Level 14, State 1, Line 0  </p>
-<p>The solution is: When running a query, SQL 2k5 64bit is trying to invoke the sp_tables_info_rowset_64 store procedure. But this proc is not in SQL 2k server. So one wrapper is needed to put in SQL 2k server to make the query work.  </p>
-<p>Create Procedure sp_tables_info_rowset_64<br>@table_name sysname,<br>@table_schema sysname = null,<br>@table_type nvarchar(255) = null<br>as<br>declare @Result int<br>set @Result = 0<br>exec @Result = sp_tables_info_rowset @table_name, @table_schema, @table_type</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server/SQL-Server-2005-64bit//" class="article-tag-list-link color2">SQL Server 2005 64bit</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2008/03/24/2008-03-24-sql-2005-64bit-with-linked-server-sql-2000-query-issues/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
@@ -1064,6 +1057,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL Server 2008 R2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Blog</a>
               </li>
             
             <div class="clearfix"></div>

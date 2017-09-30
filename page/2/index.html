@@ -141,6 +141,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2014-04-01-enterprise-library-5-0-visual-studio-configuration-editor-conflicts-with-sql-server-management-studio-2012-and-up" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2141" target="_blank" itemprop="url">Enterprise Library 5.0 Visual Studio configuration editor conflicts with SQL Server Management Studio 2012 and up</a>
+  </h1>
+
+        
+        <a href="/2014/04/01/2014-04-01-enterprise-library-5-0-visual-studio-configuration-editor-conflicts-with-sql-server-management-studio-2012-and-up/" class="archive-article-date">
+  	<time datetime="2014-04-02T06:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I used Microsoft Enterprise Library 5.0 in a lot of project. After I upgraded SQL Server installation on my workstation to SQL Server 2012, I got this error every time trying to open a new query window in SSMS 2012.</p>
+<p><strong><em>“The ‘Microsoft.Practices.EnterpriseLibrary.Configuration.Design.VisualStudioIntegration2010Package, Microsoft.Practices.EnterpriseLibrary.Configuration.Design.VisualStudioIntegration2010, Version=1.0.0.0, Culture=netutral, PublicKeyToken=null’ package did not load correctly. The problem mayhave been cuased by a configuration change or by the installation of another extension. You can get more information by running the application together with the /log parameter on the command line, and then examining the file …\AppDate\Roaming\Microsoft\AppEnv\10.0\ActivityLog.xml’. Continue to show this error message?”</em></strong></p>
+<p>Even I can disabled and hide it for next time after it shows up at the first time, it is still very annoying. I Bingle a little bit. Looks like there was a <a href="https://connect.microsoft.com/SQLServer/feedback/details/620532/error-message-on-new-query-window-opening" target="_blank" rel="external">Microsoft Connect item</a> on SQL Server already. But the item is closed and no fix available. The only workaround is:</p>
+<p><strong>Remove the VisualStudio 2010 integration from Microsoft Enterprise Library 5.0 Optional Update 1 installation. Then if you need the Visual Studio 2010 integration, install the EnterpriseLibrary Configuration extension from Microsoft via the Extension Manager in VS2010.</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL-Server/Visual-Studio//" class="article-tag-list-link color4">Visual Studio</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/04/01/2014-04-01-enterprise-library-5-0-visual-studio-configuration-editor-conflicts-with-sql-server-management-studio-2012-and-up/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2014-03-31-msdn-article-for-net-framework-versions-and-dependencies" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -873,80 +952,6 @@
 
 
   
-    <article id="post-2014-01-17-those-legendary-operation-systems" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1791" target="_blank" itemprop="url">Those Legendary Operation Systems…</a>
-  </h1>
-
-        
-        <a href="/2014/01/17/2014-01-17-those-legendary-operation-systems/" class="archive-article-date">
-  	<time datetime="2014-01-18T05:14:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-01-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>This article I read today really brings back lots of memories. And we can still get some tastes of these OS in web browser thanks to these terrific simulators.</p>
-<p><a href="http://arstechnica.com/information-technology/2014/01/7-classic-versions-of-windows-and-mac-os-you-can-run-in-a-browser/" target="_blank" rel="external">7 classic versions of Windows and Mac OS you can run in a browser</a></p>
-<p>Windows XP is already 13 years old. But it is still so popular. Amazing…</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Windows//" class="article-tag-list-link color3">Windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/01/17/2014-01-17-those-legendary-operation-systems/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1069,6 +1074,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL Server 2008 R2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Blog</a>
               </li>
             
             <div class="clearfix"></div>
