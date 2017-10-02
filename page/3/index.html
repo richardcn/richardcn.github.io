@@ -141,6 +141,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2014-01-31-happy-chinese-new-year-year-of-the-horse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1811" target="_blank" itemprop="url">Happy Chinese New Year (Year of the Horse)</a>
+  </h1>
+
+        
+        <a href="/2014/01/31/2014-01-31-happy-chinese-new-year-year-of-the-horse/" class="archive-article-date">
+  	<time datetime="2014-02-01T04:28:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-01-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Happy New Year!!</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/General//" class="article-tag-list-link color3">General</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/01/31/2014-01-31-happy-chinese-new-year-year-of-the-horse/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2014-01-17-those-legendary-operation-systems" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -819,110 +891,9 @@
 
 
   
-    <article id="post-2013-09-24-disable-sql-server-data-compression-in-a-team-foundation-server-database" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1131" target="_blank" itemprop="url">Disable SQL Server data compression in a Team Foundation Server database</a>
-  </h1>
-
-        
-        <a href="/2013/09/24/2013-09-24-disable-sql-server-data-compression-in-a-team-foundation-server-database/" class="archive-article-date">
-  	<time datetime="2013-09-25T02:32:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-09-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you are moving/restoring your TFS database from SQL Server Enterprise/Developer edition to SQL Server Standard edition, you have to disable SQL Server data compression first since this feature is only available in Enterprise/Developer edition. Here has an article on MSDN which shows how to do that: <a href="http://support.microsoft.com/kb/2712111" target="_blank" rel="external">http://support.microsoft.com/kb/2712111</a></p>
-<p>Following is a short excerpt from this article:</p>
-<p>To disable SQL compression on a Team Foundation Server 2010 database you can:  </p>
-<ol>
-<li>Launch SQL Server 2008\2008 R2 Management Studio  </li>
-<li>Locate each Team Foundation Server 2010 database(Configuration and Collection databases), right click on the database and select new Query  </li>
-<li>Type: _EXEC [dbo].[prc<em>EnablePrefixCompression] @online = 0, @disable = 1__  
-</em>  </li>
-<li>Run (!Execute) the query and verify success under messages  </li>
-<li>Repeat steps 1. to 4. for all required databases.  </li>
-</ol>
-<p>The below SQL query will provide you an estimate about the amount of additional disk space that would be required after compression has been disabled on a Team Foundation Server 2010 database.<br>_select<strong>sum</strong>(<strong>used_page_count</strong>)<strong>*</strong> 8 <strong>*</strong> 2 <strong>/</strong>1024.0<strong>  
-</strong>from<strong>sys</strong>.<strong>partitions</strong> p<strong>  
-</strong>join<strong>sys</strong>.<strong>dm_db_partition_stats</strong> s<strong>  
-</strong>on<strong> s</strong>.<strong>partition_id </strong>=<strong> p</strong>.<strong>partition_id</strong><br><strong>and</strong> s<strong>.</strong>object_id<strong>=</strong> p<strong>.</strong>object_id<strong>  
-</strong>and<strong> s</strong>.<strong>index_id </strong>=<strong> p</strong>.<strong>index_id </strong><br><strong>where</strong> p<strong>.</strong>data_compression<em>desc <strong>=</strong>‘page’<strong> </strong>  
-</em><br><strong>Note:</strong>  </p>
-<ol>
-<li>The size returned by the above sql query is in Megabytes(MB).  </li>
-<li>You should run this query against each Team Foundation Server 2010 database(Configuration and Collection databases) before disabling data compression.  </li>
-<li>The SQL query should be run in the context of each Team Foundation Server 2010 database separately.</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Database/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Database/SQL-Server/Team-Foundation-Server//" class="article-tag-list-link color3">Team Foundation Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/09/24/2013-09-24-disable-sql-server-data-compression-in-a-team-foundation-server-database/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1017,27 +988,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+                <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1050,6 +1005,26 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SQL Server, SQL Server 2017, Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
               </li>
             
             <div class="clearfix"></div>

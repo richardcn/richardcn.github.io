@@ -141,6 +141,127 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2013-05-17-use-powershell-script-to-check-windows-service-services-states" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=131" target="_blank" itemprop="url">Use Powershell Script to Check Windows Service Services’ States</a>
+  </h1>
+
+        
+        <a href="/2013/05/17/2013-05-17-use-powershell-script-to-check-windows-service-services-states/" class="archive-article-date">
+  	<time datetime="2013-05-18T01:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I have a bunch of windows servers running SQL servers. Want to make sure all windows services which are set to “Auto Start” are not stopped. Here is the powershell script to check them assuming we have all the server names in file DBServers.txt.</p>
+<pre><code>&lt;span&gt;   1:&lt;/span&gt; $dbservers = get-content &lt;span&gt;&quot;.\DBServers.txt&quot;&lt;/span&gt;
+
+&lt;span&gt;   2:&lt;/span&gt;  
+
+&lt;span&gt;   3:&lt;/span&gt; &lt;span&gt;foreach&lt;/span&gt; ($Hostname &lt;span&gt;in&lt;/span&gt; $dbservers) 
+
+&lt;span&gt;   4:&lt;/span&gt; {
+
+&lt;span&gt;   5:&lt;/span&gt;     Write-Host &lt;span&gt;&quot;Checking on server: $Hostname&quot;&lt;/span&gt;
+
+&lt;span&gt;   6:&lt;/span&gt;  
+
+&lt;span&gt;   7:&lt;/span&gt;     $Services=get-wmiobject -&lt;span&gt;class&lt;/span&gt; win32_service -computername $Hostname `
+
+&lt;span&gt;   8:&lt;/span&gt;             | &lt;span&gt;where&lt;/span&gt; {$_.StartMode -eq &lt;span&gt;&quot;Auto&quot;&lt;/span&gt; -and $_.Started -eq $&lt;span&gt;false&lt;/span&gt; } `
+
+&lt;span&gt;   9:&lt;/span&gt;             | select-&lt;span&gt;object&lt;/span&gt; Name,state,status,Started,StartMode,Startname,DisplayName
+
+&lt;span&gt;  10:&lt;/span&gt;  
+
+&lt;span&gt;  11:&lt;/span&gt;     &lt;span&gt;foreach&lt;/span&gt; ( $service &lt;span&gt;in&lt;/span&gt; $Services)
+
+&lt;span&gt;  12:&lt;/span&gt;     {
+
+&lt;span&gt;  13:&lt;/span&gt;         $message=&lt;span&gt;&quot;[$Hostname] &quot;&lt;/span&gt; +$Service.Name + &lt;span&gt;&quot; (&quot;&lt;/span&gt; + $service.DisplayName + &lt;span&gt;&quot;) &quot;&lt;/span&gt; +$Service.state +&lt;span&gt;&quot; &quot;&lt;/span&gt; `
+
+&lt;span&gt;  14:&lt;/span&gt;                 +$Service.status +&lt;span&gt;&quot; &quot;&lt;/span&gt; +$Service.Started +&lt;span&gt;&quot; &quot;&lt;/span&gt; +$Service.Startname 
+
+&lt;span&gt;  15:&lt;/span&gt;         write-host $message -background &lt;span&gt;&quot;RED&quot;&lt;/span&gt; -foreground &lt;span&gt;&quot;BLACK&quot;&lt;/span&gt;     
+
+&lt;span&gt;  16:&lt;/span&gt;     }
+
+&lt;span&gt;  17:&lt;/span&gt; }
+
+&lt;span&gt;  18:&lt;/span&gt;  
+
+&lt;span&gt;  19:&lt;/span&gt; Write-Host &lt;span&gt;&quot;All checkings are done.&quot;&lt;/span&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Database/PowerShell//" class="article-tag-list-link color1">PowerShell</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Database/PowerShell/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Database/PowerShell/SQL-Server/Windows-Server-2008-R2//" class="article-tag-list-link color3">Windows Server 2008 R2</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/05/17/2013-05-17-use-powershell-script-to-check-windows-service-services-states/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2013-03-14-goodbye-google-reader" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -858,86 +979,9 @@
 
 
   
-    <article id="post-2012-06-01-how-to-check-what-sql-server-trace-flags-are-enabled" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=231" target="_blank" itemprop="url">How to check what SQL Server Trace Flags are enabled</a>
-  </h1>
-
-        
-        <a href="/2012/06/01/2012-06-01-how-to-check-what-sql-server-trace-flags-are-enabled/" class="archive-article-date">
-  	<time datetime="2012-06-01T23:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-06-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you use some trace flags in SQL Server, and want to find out what trace flags are enabled, just run this:  </p>
-<p><strong>dbcc tracestatus(-1) </strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL//" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2012/06/01/2012-06-01-how-to-check-what-sql-server-trace-flags-are-enabled/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
@@ -1032,27 +1076,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+                <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1065,6 +1093,26 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SQL Server, SQL Server 2017, Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
               </li>
             
             <div class="clearfix"></div>

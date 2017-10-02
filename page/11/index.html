@@ -141,6 +141,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2008-03-24-running-ssis-packages-under-other-users" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=281" target="_blank" itemprop="url">Running SSIS packages under other Users</a>
+  </h1>
+
+        
+        <a href="/2008/03/24/2008-03-24-running-ssis-packages-under-other-users/" class="archive-article-date">
+  	<time datetime="2008-03-24T23:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>There is one place need your very special attention when you try to deploy SSIS package, and let other users run the package. That is “Package Protection Level”. By default it chooses “Encrypt sensitive data with user key”. That is why you can’t run it under the other users’ account. Maybe you can try to use “Rely on server storage and roles for access control”.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL-Server/SSIS//" class="article-tag-list-link color5">SSIS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2008/03/24/2008-03-24-running-ssis-packages-under-other-users/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2008-03-24-sql-2005-64bit-with-linked-server-sql-2000-query-issues" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -903,93 +979,9 @@ return groups.ToString();
 
 
   
-    <article id="post-2008-02-13-referenced-assembly-system-deployment-is-not-installed-for-clickonce" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=381" target="_blank" itemprop="url">Referenced assembly System.Deployment is not installed for ClickOnce?</a>
-  </h1>
-
-        
-        <a href="/2008/02/13/2008-02-13-referenced-assembly-system-deployment-is-not-installed-for-clickonce/" class="archive-article-date">
-  	<time datetime="2008-02-14T03:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-02-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>My computer has been complaining for “Referenced assembly System.Deployment is not installed…” whenever trying to install any ClickOnce apps. And those apps were not installed successfully since sometime. Here are the solutions I found from msdn forum. It worked very well after I delete the ClickOnce store folder.  </p>
-<ol>
-<li><p>Run “Mage -cc”. (Mage.exe can be found in the .NET 2.0 SDK)  </p>
-</li>
-<li><p>Uninstall the application via Add/Remove Programs and reinstall it  </p>
-</li>
-<li><p>If neither of these work then the last option is to delete the ClickOnce store and get back to clean state. To delete the ClickOnce store delete the folder “%userprofile%\Local Settings\Apps”.</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Net-Framework-2-0//" class="article-tag-list-link color4">.Net Framework 2.0</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Net-Framework-2-0/Clickonce//" class="article-tag-list-link color5">Clickonce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2008/02/13/2008-02-13-referenced-assembly-system-deployment-is-not-installed-for-clickonce/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
     </nav>
   
 
@@ -1084,27 +1076,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+                <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1117,6 +1093,26 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SQL Server, SQL Server 2017, Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
               </li>
             
             <div class="clearfix"></div>
