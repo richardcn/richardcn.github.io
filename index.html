@@ -141,6 +141,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Two-new-features-in-SQL-Server-Management-Studio-17-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/Two-new-features-in-SQL-Server-Management-Studio-17-3/">Two new features in SQL Server Management Studio 17.3</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/17/Two-new-features-in-SQL-Server-Management-Studio-17-3/" class="archive-article-date">
+  	<time datetime="2017-10-17T22:14:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Two new features in SQL Server Management Studio 17.3##</p>
+<p><a href="https://blogs.technet.microsoft.com/dataplatforminsider/2017/10/10/whats-new-in-sql-server-management-studio-17-3/" target="_blank" rel="external">SSMS 17.3 comes with two new exciting features:</a></p>
+<ul>
+<li><strong>Import Flat File Wizard</strong></li>
+<li><strong>XEvent Profiler</strong></li>
+</ul>
+<p>I really like these two features. The <strong>Import Flat File Wizard</strong> streamlines the import experience of flat files (.csv, .txt) with an intelligent framework (<strong><a href="https://microsoft.github.io/prose/" target="_blank" rel="external">Microsoft Program Synthesis using Examples - PROSE</a></strong>), requiring minimal user intervention or specialized domain knowledge. We don’t have to go through the long and time consuming SQL Server Import and Export Wizard anymore. Hooray!!</p>
+<p>Here is the <a href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-flat-file-wizard#started" target="_blank" rel="external">step by step tutorial</a> for <strong>Import Flat File Wizard</strong>.</p>
+<p><strong>XEvent Profiler</strong> is replacing the plain old SQL Server Profiler. Finally we got something in SSMS GUI easier to use the extended events. Here is the <a href="https://docs.microsoft.com/en-us/sql/relational-databases/extended-events/use-the-ssms-xe-profiler#getting-started" target="_blank" rel="external">step by step tutorial</a> for it. Cheers!</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL Server Management Studio</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SSMS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/17/Two-new-features-in-SQL-Server-Management-Studio-17-3/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-WAIT-AT-LOW-PRIORITY-option-of-Alter-Index" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -991,87 +1081,6 @@ GO
 
 
   
-    <article id="post-2014-04-25-uselegacyv2runtimeactivationpolicy-fix-for-crystal-report-on-net-framework-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2231" target="_blank" itemprop="url">useLegacyV2RuntimeActivationPolicy fix for Crystal Report on .Net Framework 4</a>
-  </h1>
-
-        
-        <a href="/2014/04/25/2014-04-25-uselegacyv2runtimeactivationpolicy-fix-for-crystal-report-on-net-framework-4/" class="archive-article-date">
-  	<time datetime="2014-04-26T06:45:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>We just upgraded some apps from .Net Framework 3.5 sp1 to .Net Framework 4. Some Crystal reports got this error.</p>
-<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/04/clip_image002.jpg" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/04/clip_image002_thumb.jpg" alt="clip_image002"></a></p>
-<p>After Bingo a little bit, found <a href="http://search.sap.com/ui/notes?id=0001525432&amp;boj=/sap/bc/bsp/spn/scn_bosap/notes.do?access=69765F6D6F64653D3939382669765F7361706E6F7465735F6E756D6265723D30303031353235343332&amp;ssocompatible" target="_blank" rel="external">this note</a> on SAP site. It is because of the mixed mode dll issue. Have to put this configuration in the config file:</p>
-<p>**<startup uselegacyv2runtimeactivationpolicy="true">  </startup></p>
-<p><supportedruntime version="v4.0"><br>**</supportedruntime></p>
-<p>And this basically is for compatibility of mixed mode dlls. <a href="http://web.archive.org/web/20130128072944/http://www.marklio.com/marklio/PermaLink,guid,ecc34c3c-be44-4422-86b7-900900e451f9.aspx" target="_blank" rel="external">This blog post</a> has very detail info about this flag.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Net-Framework//" class="article-tag-list-link color5">.Net Framework</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Net-Framework/Net-Framework-2-0//" class="article-tag-list-link color4">.Net Framework 2.0</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/04/25/2014-04-25-uselegacyv2runtimeactivationpolicy-fix-for-crystal-report-on-net-framework-4/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1177,18 +1186,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
@@ -1213,7 +1210,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL Server Management Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SSMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
               </li>
             
             <div class="clearfix"></div>

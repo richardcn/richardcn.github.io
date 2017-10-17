@@ -141,6 +141,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2008-04-02-moving-to-spaces-live-com" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=271" target="_blank" itemprop="url">Moving to spaces.live.com</a>
+  </h1>
+
+        
+        <a href="/2008/04/02/2008-04-02-moving-to-spaces-live-com/" class="archive-article-date">
+  	<time datetime="2008-04-03T03:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I move this blog to spaces.live.com. So see you <a href="http://chenz08.spaces.live.com/" target="_blank" rel="external">there</a>.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/live-com//" class="article-tag-list-link color4">live.com</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2008/04/02/2008-04-02-moving-to-spaces-live-com/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2008-04-01-my-working-blog-start-here" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -836,85 +908,6 @@
 
 
   
-    <article id="post-2008-03-04-execute-ssis-package-in-c-apps" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=361" target="_blank" itemprop="url">Execute SSIS Package in C# Apps</a>
-  </h1>
-
-        
-        <a href="/2008/03/04/2008-03-04-execute-ssis-package-in-c-apps/" class="archive-article-date">
-  	<time datetime="2008-03-04T09:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Add referrence to Micosoft.SQLServer.ManagedDTS.dll. It is in your SQL Server Program Files Folder\SDK\Assemblies.  </p>
-<p>using Microsoft.SqlServer.Dts.Runtime;  </p>
-<p>namespace ExecuteSSIS<br>{<br>class Program<br>{<br>static void Main(string[] args)<br>{<br>Application app = new Application();<br>//<br>// Load package from file system<br>//<br>Package package = app.LoadPackage(@”c:\myPackage.dtsx”, null);<br>package.ImportConfigurationFile(@”c:\myPackage.dtsConfig”);<br>//Pass parameters<br>Variables vars = package.Variables;<br>vars[“variable”].Value = “values”;<br>DTSExecResult result = package.Execute();<br>Console.WriteLine(“Package Execution results: {0}”,result.ToString());  </p>
-<p>//<br>// Load package from Sql Server<br>//<br>Package package2 = app.LoadFromSqlServer(<br>“myPackage”,”server_name”, “sa”, “password”, null);<br>package2.ImportConfigurationFile(@”c:\myPackage.dtsConfig”);<br>//Pass parameters<br>Variables vars2 = package2.Variables;<br>vars2[“variable”].Value = “value”;<br>DTSExecResult result2 = package2.Execute();<br>Console.WriteLine(“Package Execution results: {0}”,<br>result2.ToString());<br>}<br>}<br>}</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server/SSIS//" class="article-tag-list-link color5">SSIS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2008/03/04/2008-03-04-execute-ssis-package-in-c-apps/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
@@ -1020,18 +1013,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
@@ -1056,7 +1037,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL Server Management Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SSMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
               </li>
             
             <div class="clearfix"></div>

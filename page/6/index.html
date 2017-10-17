@@ -141,6 +141,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2012-07-26-call-soap-web-service-with-basic-authorization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=211" target="_blank" itemprop="url">Call SOAP Web Service With Basic Authorization</a>
+  </h1>
+
+        
+        <a href="/2012/07/26/2012-07-26-call-soap-web-service-with-basic-authorization/" class="archive-article-date">
+  	<time datetime="2012-07-27T02:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-07-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Recently I have to call a SOAP Web Service with basic authorization in .Net program. But there is not a simple way to configure the Service Proxy to send the authorization header in HTTP package. I did a little bit search on Internet. Found <a href="http://cisforcoder.wordpress.com/2010/12/01/how-to-implement-basic-http-authentication-in-wcf-on-windows-phone-7/" target="_blank" rel="external">this solution</a>. Basically, it is adding the header info when initiating the call to web service. It needs an “<strong>Authorization</strong>” header which is added to the HTTP call which contains the base64 encoded user name and password like this:   </p>
+<p><strong>Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=</strong>  </p>
+<p>Following are the sample code from this post.  </p>
+<p>Firstly a method to encode the credentials:  </p>
+<pre><code>&lt;span&gt;&lt;b&gt;private string EncodeBasicAuthenticationCredentials(string username, string password)&lt;br&gt;{&lt;br&gt;  //first concatenate the user name and password, separated with :&lt;br&gt;  string credentials = username + &quot;:&quot; + password;&lt;br&gt;&lt;br&gt;  //Http uses ascii character encoding, WP7 doesn’t include&lt;br&gt;  // support for ascii encoding but it is easy enough to convert&lt;br&gt;  // since the first 128 characters of unicode are equivalent to ascii.&lt;br&gt;  // Any characters over 128 can’t be expressed in ascii so are replaced&lt;br&gt;  // by ?&lt;br&gt;  var asciiCredentials = (from c in credentials&lt;br&gt;                     select c &lt;= 0x7f ? (byte)c : (byte)&apos;?&apos;).ToArray();&lt;br&gt;&lt;br&gt;  //finally Base64 encode the result&lt;br&gt;  return Convert.ToBase64String(asciiCredentials);&lt;br&gt;}&lt;/b&gt; &lt;/span&gt;
+</code></pre><p>Now that we have a means of encoding our credentials we just need to add them to the headers of our WCF request.  We can easily do this by wrapping the call in an OperationContextScope:  </p>
+<pre><code>&lt;span&gt;&lt;b&gt;var credentials = EncodeBasicAuthenticationCredentials(&quot;username&quot;, &quot;password&quot;);&lt;br&gt;&lt;br&gt;using (OperationContextScope scope =&lt;br&gt;          new OperationContextScope(service.InnerChannel))&lt;br&gt;{&lt;br&gt;  HttpRequestMessageProperty request = new HttpRequestMessageProperty();&lt;br&gt;  request.Headers[System.Net.HttpRequestHeader.Authorization] = &quot;Basic &quot; + credentials;&lt;br&gt;&lt;br&gt;  OperationContext.Current.OutgoingMessageProperties.Add(&lt;br&gt;                                     HttpRequestMessageProperty.Name, request);&lt;br&gt;&lt;br&gt;  service.DoSomethingAsync();&lt;br&gt;}&lt;br&gt;&lt;/b&gt;&lt;/span&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Net-Framework-2-0//" class="article-tag-list-link color4">.Net Framework 2.0</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Net-Framework-2-0/Web-Service//" class="article-tag-list-link color2">Web Service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/07/26/2012-07-26-call-soap-web-service-with-basic-authorization/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2012-07-20-how-to-make-barcode-font-display-correctly-in-web-service" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -840,78 +922,6 @@
 
 
   
-    <article id="post-2010-03-16-add-consolas-font-to-command-prompt" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=7" target="_blank" itemprop="url">Add Consolas font to command prompt</a>
-  </h1>
-
-        
-        <a href="/2010/03/16/2010-03-16-add-consolas-font-to-command-prompt/" class="archive-article-date">
-  	<time datetime="2010-03-17T06:19:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>reg add “HKLMSOFTWAREMicrosoftWindows NTCurrentVersionConsoleTrueTypeFont” /v 00 /d Consolas</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Windows//" class="article-tag-list-link color3">Windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2010/03/16/2010-03-16-add-consolas-font-to-command-prompt/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1017,18 +1027,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
@@ -1053,7 +1051,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL Server Management Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SSMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
               </li>
             
             <div class="clearfix"></div>

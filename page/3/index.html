@@ -141,6 +141,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2014-02-26-create-symbolic-linkjunction-on-windows-servers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1861" target="_blank" itemprop="url">Create Symbolic Link/Junction on Windows Servers</a>
+  </h1>
+
+        
+        <a href="/2014/02/26/2014-02-26-create-symbolic-linkjunction-on-windows-servers/" class="archive-article-date">
+  	<time datetime="2014-02-27T05:05:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>We have to consolidate some share folders to expand the storage space recently. The common solution is to create some symbolic links on main windows file server’s share folders. There are three types of file links supported in the NTFS file system: <strong>hard links, junctions, and symbolic links</strong>. Here is an MSDN article for <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa365006(v=vs.85" target="_blank" rel="external">an overview of these types</a>.aspx).</p>
+<p>As for my scenario: </p>
+<ul>
+<li><em>Windows Server is Windows Server 2008 R2 Enterprise</em>  </li>
+<li><em>Main folder is <strong>H:\Data</strong></em>  </li>
+<li><em>Needs to create link in main folder as <strong>Y2014</strong> which is linked to <strong>I:\Data\Y2014</strong></em></li>
+</ul>
+<p>Before creating the link, one more thing we have to check the server is the “<strong>Symbolic link evaluation settings</strong>” on this windows server to make sure the link will work.</p>
+<p>Use this command to query the settings:</p>
+<p><strong><em>fsutil behavior query SymlinkEvaluation</em></strong></p>
+<p>And this command to set the settings:</p>
+<p><strong><em>fsutil behavior set SymlinkEvaluation [L2L:{0|1}] | [L2R:{0|1}] | [R2R:{0|1}] | [R2L:{0|1}]</em></strong></p>
+<p>These settings can also be set via Group Policy-&gt;Computer Configuration &gt; Administrative Templates &gt; System &gt; Filesystem and configure “<strong>Selectively allow the evaluation of a symbolic link</strong>“.</p>
+<p>In order for users to access all folders, it needs to be created as “<strong>Junction</strong>” instead of Symbolic link. I used “<strong>MKLINK</strong>” command:</p>
+<p><strong><em>MKLINK /J H:\Data\Y2014 I:\Data\Y2014</em></strong></p>
+<p>Windows Sysinternals tool suite also has a tool – <a href="http://technet.microsoft.com/en-us/sysinternals/bb896768" target="_blank" rel="external">Junction</a> can do it.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Windows-Server//" class="article-tag-list-link color5">Windows Server</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Windows-Server/Windows-Server-2008-R2//" class="article-tag-list-link color3">Windows Server 2008 R2</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/02/26/2014-02-26-create-symbolic-linkjunction-on-windows-servers/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2014-02-21-sql-2012-system-health-dashboard-sp_server_diagnostics" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -816,80 +907,6 @@
 
 
   
-    <article id="post-2013-10-09-which-sql-server-component-requires-sql-instance-restart" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1581" target="_blank" itemprop="url">Which SQL Server component requires SQL instance restart?</a>
-  </h1>
-
-        
-        <a href="/2013/10/09/2013-10-09-which-sql-server-component-requires-sql-instance-restart/" class="archive-article-date">
-  	<time datetime="2013-10-10T06:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-10-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>When you want to install additional components on a mission critical SQL server instance in production, you have to be very careful to find out which component requires SQL instance to be restarted and which does not. Otherwise, you will find your phone keep ringing. Here are two examples:</p>
-<p><strong>1) Database Replication doesn’t require SQL instance to be restarted. But it does need to restart the SQL Server Agent in order for it to work.</strong></p>
-<p><strong>2) FULL Text Search does restart the SQL instance during the installation!!!</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/10/09/2013-10-09-which-sql-server-component-requires-sql-instance-restart/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -995,18 +1012,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
@@ -1031,7 +1036,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL Server Management Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SSMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
               </li>
             
             <div class="clearfix"></div>

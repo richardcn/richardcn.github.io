@@ -141,6 +141,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2013-10-09-which-sql-server-component-requires-sql-instance-restart" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1581" target="_blank" itemprop="url">Which SQL Server component requires SQL instance restart?</a>
+  </h1>
+
+        
+        <a href="/2013/10/09/2013-10-09-which-sql-server-component-requires-sql-instance-restart/" class="archive-article-date">
+  	<time datetime="2013-10-10T06:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>When you want to install additional components on a mission critical SQL server instance in production, you have to be very careful to find out which component requires SQL instance to be restarted and which does not. Otherwise, you will find your phone keep ringing. Here are two examples:</p>
+<p><strong>1) Database Replication doesn’t require SQL instance to be restarted. But it does need to restart the SQL Server Agent in order for it to work.</strong></p>
+<p><strong>2) FULL Text Search does restart the SQL instance during the installation!!!</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/10/09/2013-10-09-which-sql-server-component-requires-sql-instance-restart/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2013-09-27-microsoft-surface-2-new-ad" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -976,96 +1050,6 @@
 
 
   
-    <article id="post-2013-05-30-minimum-permissions-for-ms-sql-server-service-account" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=111" target="_blank" itemprop="url">Minimum permissions for MS SQL Server Service Account</a>
-  </h1>
-
-        
-        <a href="/2013/05/30/2013-05-30-minimum-permissions-for-ms-sql-server-service-account/" class="archive-article-date">
-  	<time datetime="2013-05-31T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-05-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Just a note for myself from this <a href="http://sqlblog.com/blogs/greg_low/archive/2013/05/30/sql-server-service-won-t-start-after-changing-service-account-service-specific-error-2146885628.aspx" target="_blank" rel="external">post</a>. Minimum permissions for a MS SQL Server service account are:</p>
-<ul>
-<li>Log on as a service (SeServiceLogonRight)</li>
-<li>Replace a process-level token (SeAssignPrimaryTokenPrivilege)</li>
-<li>Bypass traverse checking (SeChangeNotifyPrivilege)</li>
-<li>Adjust memory quotas for a process (SeIncreaseQuotaPrivilege)</li>
-<li>Permission to start SQL Server Active Directory Helper</li>
-<li>Permission to start SQL Writer</li>
-<li>Permission to read the Event Log service</li>
-<li>Permission to read the Remote Procedure Call service</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Active-Directory//" class="article-tag-list-link color2">Active Directory</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Active-Directory/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Active-Directory/SQL-Server/Windows-Server//" class="article-tag-list-link color5">Windows Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/05/30/2013-05-30-minimum-permissions-for-ms-sql-server-service-account/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1171,18 +1155,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
@@ -1207,7 +1179,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL Server Management Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SSMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
               </li>
             
             <div class="clearfix"></div>

@@ -141,6 +141,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2008-03-04-execute-ssis-package-in-c-apps" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=361" target="_blank" itemprop="url">Execute SSIS Package in C# Apps</a>
+  </h1>
+
+        
+        <a href="/2008/03/04/2008-03-04-execute-ssis-package-in-c-apps/" class="archive-article-date">
+  	<time datetime="2008-03-04T09:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Add referrence to Micosoft.SQLServer.ManagedDTS.dll. It is in your SQL Server Program Files Folder\SDK\Assemblies.  </p>
+<p>using Microsoft.SqlServer.Dts.Runtime;  </p>
+<p>namespace ExecuteSSIS<br>{<br>class Program<br>{<br>static void Main(string[] args)<br>{<br>Application app = new Application();<br>//<br>// Load package from file system<br>//<br>Package package = app.LoadPackage(@”c:\myPackage.dtsx”, null);<br>package.ImportConfigurationFile(@”c:\myPackage.dtsConfig”);<br>//Pass parameters<br>Variables vars = package.Variables;<br>vars[“variable”].Value = “values”;<br>DTSExecResult result = package.Execute();<br>Console.WriteLine(“Package Execution results: {0}”,result.ToString());  </p>
+<p>//<br>// Load package from Sql Server<br>//<br>Package package2 = app.LoadFromSqlServer(<br>“myPackage”,”server_name”, “sa”, “password”, null);<br>package2.ImportConfigurationFile(@”c:\myPackage.dtsConfig”);<br>//Pass parameters<br>Variables vars2 = package2.Variables;<br>vars2[“variable”].Value = “value”;<br>DTSExecResult result2 = package2.Execute();<br>Console.WriteLine(“Package Execution results: {0}”,<br>result2.ToString());<br>}<br>}<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL-Server/SSIS//" class="article-tag-list-link color5">SSIS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2008/03/04/2008-03-04-execute-ssis-package-in-c-apps/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2008-02-16-use-active-directory-to-authenticate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -907,70 +986,6 @@ return groups.ToString();
 
 
   
-    <article id="post-2007-07-15-some-tutorial-for-running-java-on-pocket-pc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=461" target="_blank" itemprop="url">Some tutorial for running Java on Pocket PC</a>
-  </h1>
-
-        
-        <a href="/2007/07/15/2007-07-15-some-tutorial-for-running-java-on-pocket-pc/" class="archive-article-date">
-  	<time datetime="2007-07-15T14:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2007-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>These are good articles for setting up Java on Pocket PC:  </p>
-<p><a href="http://www.aximsite.com/boards/applications/96243-opera-pocket-pc-setup-tutorial-quick-review.html#post810606" target="_blank" rel="external">Opera on Pocket PC</a>  </p>
-<p><a href="http://www.pocketpcmag.com/blogs/index.php?blog=3&amp;title=java_midlets_on_the_pocket_pc_the_comple&amp;more=1&amp;c=1&amp;tb=1&amp;pb=1" target="_blank" rel="external">Java Midlets on the Pocket PC - the Complete Tutorial</a>  </p>
-<p>Based on Java: <a href="http://www.mgmaps.com/download.php" target="_blank" rel="external">Mobile GMap</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2007/07/15/2007-07-15-some-tutorial-for-running-java-on-pocket-pc/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
@@ -1076,18 +1091,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Database Restore</a>
               </li>
              
@@ -1112,7 +1115,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL Server Management Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SSMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DotNetCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
               </li>
             
             <div class="clearfix"></div>
