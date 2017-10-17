@@ -141,6 +141,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-WAIT-AT-LOW-PRIORITY-option-of-Alter-Index" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/16/WAIT-AT-LOW-PRIORITY-option-of-Alter-Index/">WAIT_AT_LOW_PRIORITY option of Alter Index</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/16/WAIT-AT-LOW-PRIORITY-option-of-Alter-Index/" class="archive-article-date">
+  	<time datetime="2017-10-16T23:24:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="WAIT-AT-LOW-PRIORITY"><a href="#WAIT-AT-LOW-PRIORITY" class="headerlink" title="WAIT_AT_LOW_PRIORITY"></a>WAIT_AT_LOW_PRIORITY</h2><p>Starting in SQL Server 2014, there is an option - <strong>WAIT_AT_LOW_PRIORITY</strong> for <strong>online index rebuild</strong>. We can use it to kill the blocking queries or stop the index rebuild job itself.</p>
+<p>An online index rebuild has to wait for blocking operations on this table. <strong>WAIT_AT_LOW_PRIORITY</strong> indicates that the online index rebuild operation will wait for low priority locks, allowing other operations to proceed while the online index build operation is waiting. Omitting the WAIT AT LOW PRIORITY option is equivalent to <strong>WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 minutes, ABORT_AFTER_WAIT = NONE)</strong>.</p>
+<pre><code>ALTER INDEX IX_My_Index ON dbo.MyTable REBUILD 
+WITH ( 
+    ONLINE = ON (
+        WAIT_AT_LOW_PRIORITY (
+        MAX_DURATION = 1 MINUTES , 
+        ABORT_AFTER_WAIT = BLOCKERS)));
+</code></pre><p>This query gives any blocking SELECT queries currently running 1 minute to finish executing or else this query will kill them and then execute the index rebuild. </p>
+<p>Alternatively we can do:</p>
+<pre><code>ALTER INDEX IX_My_Index ON dbo.MyTable REBUILD 
+WITH ( 
+    ONLINE = ON (
+        WAIT_AT_LOW_PRIORITY (
+        MAX_DURATION = 1 MINUTES , 
+        ABORT_AFTER_WAIT = SELF)));
+</code></pre><p> The rebuild query would wait for 1 minute to check if there is still any blocking queries. If so, it would kill itself, allowing the other blocking queries to continue running.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL Server 2014</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/16/WAIT-AT-LOW-PRIORITY-option-of-Alter-Index/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SQL-Server-2017-is-here" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -978,96 +1072,6 @@ GO
 
 
   
-    <article id="post-2014-04-24-upgrade-windows-server-2008-r2-standard-to-enterprise-without-media" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2191" target="_blank" itemprop="url">Upgrade Windows Server 2008 R2 Standard to Enterprise without Media</a>
-  </h1>
-
-        
-        <a href="/2014/04/24/2014-04-24-upgrade-windows-server-2008-r2-standard-to-enterprise-without-media/" class="archive-article-date">
-  	<time datetime="2014-04-25T06:33:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>We have a VM which is running Windows Server 2008 R2 Standard with 32GB RAM. Recently we have to add more RAM to it to improve SQL Server performance. Another 32GB RAM is added through VM configuration. But since it is a Windows Server 2008 R2 standard edition which has a limitation of only being able to use 32GB RAM MAX, it still can’t see the full 64GB. Found out we have to upgrade the edition to Enterprise in order to fully utilize 64GB RAM. By following this blog post for <a href="http://blogs.technet.com/b/server_core/archive/2009/10/14/upgrading-windows-server-2008-r2-without-media.aspx" target="_blank" rel="external">upgrading Windows Server 2008 R2 without media</a>, I ran the script to initiate the upgrade:</p>
-<p><strong>DISM /online /Set-Edition:ServerEnterprise /ProductKey:XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</strong></p>
-<p>I used the right MAK license key for Windows Server 2008 R2 Enterprise. But the upgrade was failed. The error message is something like this:</p>
-<p><em>Error: 1605</em></p>
-<p><em>The specified product key is not valid for the target edition.<br>Run this command again with a product key specific to the target edition.</em></p>
-<p><em>The DISM log file can be found at C:\Windows\Logs\DISM\dism.log </em></p>
-<p><em>For example if upgrading to Enterprise and using a MAK key, the DISM log would contain the following entry.</em></p>
-<p><em>dism /online /Set-Edition:ServerEnterprise /ProductKey:[abcde-abcde-abcde-abcde-abcde]</em></p>
-<blockquote><em>Error DISM DISM Transmog Provider: PID=5728 Product key is keyed to [], but user requested transmog to [ServerEnterprise] - CTransmogManager::ValidateTransmogrify</em><br>&gt;<br>&gt; CTransmogManager::ValidateTransmogrify<br>&gt;<br>&gt; <em>Error DISM DISM Transmog Provider: PID=3880 [Upgrading system]: The specified product key is not valid for the target edition.</em><br>&gt;<br>&gt; <em>Run this command again with a product key specific to the target edition.</em><br>&gt;<br>&gt; <em>[hrError=0x80070645] - CTransmogManager::EventError</em><br>&gt;<br>&gt; <em>Warning DISM DISM Transmog Provider: PID=3880 The selected OS <em>cannot</em> upgrade to [ServerEnterprise] - CTransmogManager::TransmogrifyWorker</em><br>&gt;<br>&gt; <em>Error DISM DISM Transmog Provider: PID=3880 Failed to Upgrade! - CTransmogManager::TransmogrifyWorker(hr:0x80070645)</em><br>&gt;<br>&gt; <em>Error DISM DISM Transmog Provider: PID=3880 Failed to upgrade! - CTransmogManager::ExecuteCmdLine(hr:0x80070645)</em><br>&gt;<br>&gt; </blockquote>
-
-<p>I Bingo a little bit about this error message. Found <a href="http://support.microsoft.com/kb/2652825/en-us" target="_blank" rel="external">a KB which is exactly for it</a>. Looks like I can’t use our MAK key to do it since the key works for multiple editions. DISM doesn’t know what to do with it. I have to get a KMS Client Setup Key for Windows Server 2008 R2 Enterprise to do the upgrade first. So I get the KMS key from <a href="http://technet.microsoft.com/en-us/library/ff793421.aspx" target="_blank" rel="external">here</a> which is <strong>489J6-VHDMP-X63PK-3K798-CPX3Y.</strong></p>
-<p>Then I ran the upgrade script again. It worked this time. After the upgrade and reboot, I have to use these two script to change the product key to my correct MAK key, and activate windows. Otherwise, windows will show it is not a genuine windows installation. </p>
-<p><strong>cscript.exe %windir%\system32\slmgr.vbs /IPK XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</strong></p>
-<p><strong>cscript.exe %windir%\system32\slmgr.vbs /ato</strong></p>
-<p>After all these were done, my VM is able to see and use full 64GB RAM right now. Cheers!</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Windows-Server//" class="article-tag-list-link color5">Windows Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Windows-Server/Windows-Server-2008-R2//" class="article-tag-list-link color3">Windows Server 2008 R2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/04/24/2014-04-24-upgrade-windows-server-2008-r2-standard-to-enterprise-without-media/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1193,6 +1197,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2017</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
              
@@ -1201,11 +1213,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2017</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
               </li>
             
             <div class="clearfix"></div>

@@ -141,6 +141,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2010-02-12-sql-server-2005-database-mirroring-manual-failover-error-with-read-only-filegroup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=8" target="_blank" itemprop="url">SQL Server 2005 Database Mirroring Manual Failover Error with Read-Only FileGroup</a>
+  </h1>
+
+        
+        <a href="/2010/02/12/2010-02-12-sql-server-2005-database-mirroring-manual-failover-error-with-read-only-filegroup/" class="archive-article-date">
+  	<time datetime="2010-02-12T10:05:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-02-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I recently encountered this wired error with database mirroring in SQL Server 2005. I have a big database (&gt;1TB) with two servers doing mirroring for high availability. <strong>DBServer1</strong> is the <em>Principal</em> and <strong>DBServer2</strong> is the <em>Mirror</em>. They both have <strong><em>SQL Server 2005 Standard 64-bit Version with Service Pack 3 (9.0.4226)</em></strong> installed on <strong><em>Windows Server 2003 R2 x64 with Service Pack 2</em></strong>. All the hardware and software configurations are exactly the same. They are using <strong><em>High safety without automatic failover (synchronous)</em></strong> mirroring operating mode. So I have to do manual failover when needed. I did the failover for server maintenance a couple times and it worked very well. Recently, since there are a few big tables in this database which doesn’t change any more, I made the filegroup which contains only these tables to read-only in order to save the backup space. But here it came the problem. When I did a manual failover from DBServer1 to DBServer2, DBServer2 resumed the Principal successfully, but DBServer1 as Mirror showed “Synchronizing” not “Synchronized”. When I launched the Database Mirroring Monitor, it showed trouble with this mirroring. So I checked SQL Server Log, it was filled up with these error messages trying to sync with principal:</p>
+<blockquote><em>Error: 823, Severity: 24, State: 3.</em><br>&gt;<br>&gt; <em>The operating system returned error 5(Access is denied.) to SQL Server during a write at offset 0000000000000000 in file ‘D:MSSQLDATAbigfile.ndf’. Additional messages in the SQL Server error log and system event log may provide more detail. This is a severe system-level error condition that threatens database integrity and must be corrected immediately. Complete a full database consistency check (DBCC CHECKDB). This error can be caused by many factors; for more information, see SQL Server Books Online.</em><br>&gt;<br>&gt; </blockquote>
+
+<p>I realized this might be something related with the read-only filegroup. So I did some testing on my test server with a small database which also has read-only filegroup. It had the same errors when doing a manual failover. I did some research on Microsoft KB and found out this <a href="http://support.microsoft.com/default.aspx/kb/973897" target="_blank" rel="external">KB973897</a> for SQL Server 2008 which is exactly the same problem. It says “<em>The fix for this issue was first released in Cumulative Update 4 for SQL Server 2008 Service Pack 1</em>”. But it doesn’t mention this problem applies to SQL Server 2005. And I didn’t find anything about the fix for SQL Server 2005. So right now my solution is: <strong>before doing the failover, make all read-only filegroups to readwrite, perform manual failover, then turn them back to read-only after the failover. </strong>Kind of pains, but hope some solution out…</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2010/02/12/2010-02-12-sql-server-2005-database-mirroring-manual-failover-error-with-read-only-filegroup/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2010-02-10-good-article-about-diy-windows-home-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -823,96 +898,6 @@
 
 
   
-    <article id="post-2009-10-13-program-maill-merge-in-c" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=18" target="_blank" itemprop="url">Program Maill Merge in C#</a>
-  </h1>
-
-        
-        <a href="/2009/10/13/2009-10-13-program-maill-merge-in-c/" class="archive-article-date">
-  	<time datetime="2009-10-14T01:58:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2009-10-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Use word document mail merge function in C#. </p>
-<p><strong>a. Create a Mail Merge word template document, and a sample .csv file as data source.</strong></p>
-<hr>
-<p><strong>b. Use the program to generate .csv file for actual data and bind to the word document dynamically.</strong></p>
-<hr>
-<p><strong>c. Execute the Mail Merge, and Print/Preview.</strong></p>
-<hr>
-<p>Following are some sample codes: </p>
-<p><em>         // Generating csv file for Mail Merge DataSource<br>           String strDataFilename = @”<strong>C:Temp</strong>“ + DateTime.Now.ToString(“yyyyMMddHHmmss”) + “.csv”;<br>            DataSet ds = getDataSet();</em></p>
-<p><em>            int nRecCnt = ds.Tables[0].Rows.Count;</em></p>
-<p><em>            if (nRecCnt == 0)<br>            {<br>                MessageBox.Show(“No record found.”, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);<br>                return;<br>            }</em></p>
-<p><em>            using (FileStream fileStream = new FileStream(strDataFilename, FileMode.Create, FileAccess.Write, FileShare.None))<br>            {<br>                using (StreamWriter streamWriter = new StreamWriter(fileStream))<br>                {<br>                    //Record - csv Header<br>                    streamWriter.WriteLine(“First Name,Last Name,Address1,Address2,City,State,Zip”);</em></p>
-<p><em>                    for (int i = 0; i &lt; nRecCnt; i++)<br>                    {<br>                        DataRow row = ds.Tables[0].Rows[i];<br>                        streamWriter.WriteLine(string.Format(“”{0}”,”{1}”,”{2}”,”{3}”,”{4}”,”{5}”,”{6}””,<br>                                               row[“FirstName”], row[“LastName”], row[“addr1”],<br>                                               row[“addr2”], row[“city”], row[“state”], row[“zip”]));<br>                    }<br>                }<br>            }           </em></p>
-<p><em>            // Execute the Mail Merge<br>            Object strWordFilename = @”<strong>C:TempMyMailMerge.doc</strong>“;<br>            Object oMissing = System.Reflection.Missing.Value;<br>            Object oFalse = false;<br>            Object oTrue = true;</em></p>
-<p><em>            // Create an instance of Word  and make it visible.<br>            Microsoft.Office.Interop.Word.Application wrdApp = new Microsoft.Office.Interop.Word.Application();<br>            wrdApp.Visible = true;</em></p>
-<p>_            // Load Mail Merge document template<br>            Microsoft.Office.Interop.Word.<em>Document wrdDoc;<br>            wrdDoc = wrdApp.Documents.Open(ref strWordFilename, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing,<br>                ref oMissing, ref  oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref  oMissing, ref oMissing, ref oMissing);</em></p>
-<p><em>            // Open Data Source from .csv file<br>            wrdDoc.MailMerge.OpenDataSource(strDataFilename, ref oMissing, ref oFalse, ref oFalse, ref  oTrue, ref oFalse, ref oMissing, ref oMissing, ref oFalse, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);</em></p>
-<p><em>            // Print and Preview the final merge<br>            wrdDoc.MailMerge.Destination = Microsoft.Office.Interop.Word.WdMailMergeDestination.wdSendToNewDocument;<br>            wrdDoc.MailMerge.Execute(ref oMissing);<br>            wrdDoc.Application.ActiveDocument.PrintPreview();</em></p>
-<p><em>            // Close the template<br>            wrdDoc.Close(ref oFalse, ref oMissing, ref oMissing);</em></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Coding//" class="article-tag-list-link color2">Coding</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2009/10/13/2009-10-13-program-maill-merge-in-c/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
@@ -1038,6 +1023,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2017</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
              
@@ -1046,11 +1039,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2017</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
               </li>
             
             <div class="clearfix"></div>

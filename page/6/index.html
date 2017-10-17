@@ -141,6 +141,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2012-07-20-how-to-make-barcode-font-display-correctly-in-web-service" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=221" target="_blank" itemprop="url">How to make barcode font display correctly in web service</a>
+  </h1>
+
+        
+        <a href="/2012/07/20/2012-07-20-how-to-make-barcode-font-display-correctly-in-web-service/" class="archive-article-date">
+  	<time datetime="2012-07-21T03:02:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-07-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Just got an issue when using barcode font in a web service hosting in IIS7. The barcode font can’t display in the document which is generated inside the web service. And the solution to make it work is setting the option “<strong>Load User Profile</strong>“ of IIS 7 application pool to True.  </p>
+<p><img src="data:image/png;base64,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" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Barcode-Font//" class="article-tag-list-link color3">Barcode Font</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Barcode-Font/IIS7//" class="article-tag-list-link color5">IIS7</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Barcode-Font/IIS7/Web-Service//" class="article-tag-list-link color2">Web Service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/07/20/2012-07-20-how-to-make-barcode-font-display-correctly-in-web-service/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2012-06-01-how-to-check-what-sql-server-trace-flags-are-enabled" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -831,81 +912,6 @@
 
 
   
-    <article id="post-2010-02-12-sql-server-2005-database-mirroring-manual-failover-error-with-read-only-filegroup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=8" target="_blank" itemprop="url">SQL Server 2005 Database Mirroring Manual Failover Error with Read-Only FileGroup</a>
-  </h1>
-
-        
-        <a href="/2010/02/12/2010-02-12-sql-server-2005-database-mirroring-manual-failover-error-with-read-only-filegroup/" class="archive-article-date">
-  	<time datetime="2010-02-12T10:05:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-02-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I recently encountered this wired error with database mirroring in SQL Server 2005. I have a big database (&gt;1TB) with two servers doing mirroring for high availability. <strong>DBServer1</strong> is the <em>Principal</em> and <strong>DBServer2</strong> is the <em>Mirror</em>. They both have <strong><em>SQL Server 2005 Standard 64-bit Version with Service Pack 3 (9.0.4226)</em></strong> installed on <strong><em>Windows Server 2003 R2 x64 with Service Pack 2</em></strong>. All the hardware and software configurations are exactly the same. They are using <strong><em>High safety without automatic failover (synchronous)</em></strong> mirroring operating mode. So I have to do manual failover when needed. I did the failover for server maintenance a couple times and it worked very well. Recently, since there are a few big tables in this database which doesn’t change any more, I made the filegroup which contains only these tables to read-only in order to save the backup space. But here it came the problem. When I did a manual failover from DBServer1 to DBServer2, DBServer2 resumed the Principal successfully, but DBServer1 as Mirror showed “Synchronizing” not “Synchronized”. When I launched the Database Mirroring Monitor, it showed trouble with this mirroring. So I checked SQL Server Log, it was filled up with these error messages trying to sync with principal:</p>
-<blockquote><em>Error: 823, Severity: 24, State: 3.</em><br>&gt;<br>&gt; <em>The operating system returned error 5(Access is denied.) to SQL Server during a write at offset 0000000000000000 in file ‘D:MSSQLDATAbigfile.ndf’. Additional messages in the SQL Server error log and system event log may provide more detail. This is a severe system-level error condition that threatens database integrity and must be corrected immediately. Complete a full database consistency check (DBCC CHECKDB). This error can be caused by many factors; for more information, see SQL Server Books Online.</em><br>&gt;<br>&gt; </blockquote>
-
-<p>I realized this might be something related with the read-only filegroup. So I did some testing on my test server with a small database which also has read-only filegroup. It had the same errors when doing a manual failover. I did some research on Microsoft KB and found out this <a href="http://support.microsoft.com/default.aspx/kb/973897" target="_blank" rel="external">KB973897</a> for SQL Server 2008 which is exactly the same problem. It says “<em>The fix for this issue was first released in Cumulative Update 4 for SQL Server 2008 Service Pack 1</em>”. But it doesn’t mention this problem applies to SQL Server 2005. And I didn’t find anything about the fix for SQL Server 2005. So right now my solution is: <strong>before doing the failover, make all read-only filegroups to readwrite, perform manual failover, then turn them back to read-only after the failover. </strong>Kind of pains, but hope some solution out…</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2010/02/12/2010-02-12-sql-server-2005-database-mirroring-manual-failover-error-with-read-only-filegroup/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1031,6 +1037,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2017</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
              
@@ -1039,11 +1053,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2017</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
               </li>
             
             <div class="clearfix"></div>

@@ -141,6 +141,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2009-10-13-program-maill-merge-in-c" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=18" target="_blank" itemprop="url">Program Maill Merge in C#</a>
+  </h1>
+
+        
+        <a href="/2009/10/13/2009-10-13-program-maill-merge-in-c/" class="archive-article-date">
+  	<time datetime="2009-10-14T01:58:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2009-10-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Use word document mail merge function in C#. </p>
+<p><strong>a. Create a Mail Merge word template document, and a sample .csv file as data source.</strong></p>
+<hr>
+<p><strong>b. Use the program to generate .csv file for actual data and bind to the word document dynamically.</strong></p>
+<hr>
+<p><strong>c. Execute the Mail Merge, and Print/Preview.</strong></p>
+<hr>
+<p>Following are some sample codes: </p>
+<p><em>         // Generating csv file for Mail Merge DataSource<br>           String strDataFilename = @”<strong>C:Temp</strong>“ + DateTime.Now.ToString(“yyyyMMddHHmmss”) + “.csv”;<br>            DataSet ds = getDataSet();</em></p>
+<p><em>            int nRecCnt = ds.Tables[0].Rows.Count;</em></p>
+<p><em>            if (nRecCnt == 0)<br>            {<br>                MessageBox.Show(“No record found.”, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);<br>                return;<br>            }</em></p>
+<p><em>            using (FileStream fileStream = new FileStream(strDataFilename, FileMode.Create, FileAccess.Write, FileShare.None))<br>            {<br>                using (StreamWriter streamWriter = new StreamWriter(fileStream))<br>                {<br>                    //Record - csv Header<br>                    streamWriter.WriteLine(“First Name,Last Name,Address1,Address2,City,State,Zip”);</em></p>
+<p><em>                    for (int i = 0; i &lt; nRecCnt; i++)<br>                    {<br>                        DataRow row = ds.Tables[0].Rows[i];<br>                        streamWriter.WriteLine(string.Format(“”{0}”,”{1}”,”{2}”,”{3}”,”{4}”,”{5}”,”{6}””,<br>                                               row[“FirstName”], row[“LastName”], row[“addr1”],<br>                                               row[“addr2”], row[“city”], row[“state”], row[“zip”]));<br>                    }<br>                }<br>            }           </em></p>
+<p><em>            // Execute the Mail Merge<br>            Object strWordFilename = @”<strong>C:TempMyMailMerge.doc</strong>“;<br>            Object oMissing = System.Reflection.Missing.Value;<br>            Object oFalse = false;<br>            Object oTrue = true;</em></p>
+<p><em>            // Create an instance of Word  and make it visible.<br>            Microsoft.Office.Interop.Word.Application wrdApp = new Microsoft.Office.Interop.Word.Application();<br>            wrdApp.Visible = true;</em></p>
+<p>_            // Load Mail Merge document template<br>            Microsoft.Office.Interop.Word.<em>Document wrdDoc;<br>            wrdDoc = wrdApp.Documents.Open(ref strWordFilename, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing,<br>                ref oMissing, ref  oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref  oMissing, ref oMissing, ref oMissing);</em></p>
+<p><em>            // Open Data Source from .csv file<br>            wrdDoc.MailMerge.OpenDataSource(strDataFilename, ref oMissing, ref oFalse, ref oFalse, ref  oTrue, ref oFalse, ref oMissing, ref oMissing, ref oFalse, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);</em></p>
+<p><em>            // Print and Preview the final merge<br>            wrdDoc.MailMerge.Destination = Microsoft.Office.Interop.Word.WdMailMergeDestination.wdSendToNewDocument;<br>            wrdDoc.MailMerge.Execute(ref oMissing);<br>            wrdDoc.Application.ActiveDocument.PrintPreview();</em></p>
+<p><em>            // Close the template<br>            wrdDoc.Close(ref oFalse, ref oMissing, ref oMissing);</em></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Coding//" class="article-tag-list-link color2">Coding</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2009/10/13/2009-10-13-program-maill-merge-in-c/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2009-07-27-be-specific" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -816,84 +906,6 @@
 
 
   
-    <article id="post-2008-10-30-copy-only-backups" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=28" target="_blank" itemprop="url">Copy-Only Backups</a>
-  </h1>
-
-        
-        <a href="/2008/10/30/2008-10-30-copy-only-backups/" class="archive-article-date">
-  	<time datetime="2008-10-31T03:33:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-10-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you want to do a full backups or log backups without disrupting your regular backup chain, SQL Server 2005 provides a good option to do it. Here is some words from SQL Books Online:</p>
-<blockquote><em>A copy-only backup is a SQL Server backup that is independent of the sequence of conventional SQL Server backups. Usually, taking a backup changes the database and affects how later backups are restored. However, occasionally, it is useful to take a backup for a special purpose without affecting the overall backup and restore procedures for the database. For this purpose, copy-only backups were introduced SQL Server 2005…</em><br>&gt;<br>&gt; </blockquote>
-
-<p>The syntax is quite simple: </p>
-<blockquote>_BACKUP DATABASE database_name TO <backup_device> … WITH COPY<em>ONLY … </em><br>&gt;<br>&gt; </backup_device></blockquote>
-
-<p>Enjoy!</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2008/10/30/2008-10-30-copy-only-backups/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
@@ -1019,6 +1031,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2017</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
              
@@ -1027,11 +1047,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2017</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server 2014</a>
               </li>
             
             <div class="clearfix"></div>
