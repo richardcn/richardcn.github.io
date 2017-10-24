@@ -141,6 +141,67 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2006-08-24-an-introduction-to-ajax-techniques-and-frameworks-for-asp-net" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=651" target="_blank" itemprop="url">An Introduction to AJAX Techniques and Frameworks for ASP.NET</a>
+  </h1>
+
+        
+        <a href="/2006/08/24/2006-08-24-an-introduction-to-ajax-techniques-and-frameworks-for-asp-net/" class="archive-article-date">
+  	<time datetime="2006-08-24T07:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2006-08-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.codeproject.com/Ajax/IntroAjaxASPNET.asp" target="_blank" rel="external">This article</a> introduces AJAX to ASP.NET developers implementing an example web page in different ways using <a href="http://atlas.asp.net/default.aspx" target="_blank" rel="external">ASP.NET Atlas</a>, ASP.NET callbacks, <a href="http://ajaxpro.info/" target="_blank" rel="external">Ajax.Net</a>, <a href="http://anthem-dot-net.sourceforge.net/" target="_blank" rel="external">Anthem.Net</a> and <a href="http://www.magicajax.net/" target="_blank" rel="external">MagicAjax.Net</a>.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2006/08/24/2006-08-24-an-introduction-to-ajax-techniques-and-frameworks-for-asp-net/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2006-08-23-details-on-css-changes-for-ie7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -701,69 +762,6 @@
 
 
   
-    <article id="post-2006-02-22-array-in-sql-server-2000" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=751" target="_blank" itemprop="url">Array in SQL Server 2000</a>
-  </h1>
-
-        
-        <a href="/2006/02/22/2006-02-22-array-in-sql-server-2000/" class="archive-article-date">
-  	<time datetime="2006-02-23T06:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2006-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Just found a good article about <a href="http://www.sqlservercentral.com/columnists/aGrinberg/thearrayinsqlserver2000.asp" target="_blank" rel="external">table variable in T-SQL</a>.  </p>
-<p>_<strong>– Transact SQL Cursor</strong><br>CREATE PROC SQL_Cursor<br>AS<br>/<em>Local variables </em>/<br>DECLARE @ContName VARCHAR(100),<br>@CompName VARCHAR(50)<br>/<em>create the cursor</em>/<br>DECLARE MyCursor CURSOR FOR<br>SELECT CompanyName, ContactName<br>FROM Suppliers<br>WHERE ContactName LIKE ‘c%’<br>/<em>open the cursor</em>/<br>OPEN MyCursor<br>/<em>get row values</em>/<br>FETCH MyCursor INTO @CompName, @ContName<br>/<em>perform oterations with single row</em>/<br>PRINT ‘T_SQL cursor row ‘ + @ContName + ‘ ‘ + @CompName<br>/<em>establish loop structure</em>/<br>WHILE @@FETCH_STATUS = 0<br>BEGIN<br>/<em>get row values</em>/<br>FETCH MyCursor INTO @CompName, @ContName<br>/<em>perform operations with single row</em>/<br>PRINT ‘T<em>SQL cursor row ‘ + @ContName + ‘ ‘ + @CompName<br>END<br>/<em>close the cursor</em>/<br>CLOSE MyCursor<br>/<em>remove the cursor definition</em>/<br>DEALLOCATE MyCursor </em><br>_<br><strong>– Cursor Simulator  
-</strong>CREATE PROC CursorSimulator<br>AS<br>/<em>Prepare TABLE variable to take resultset</em>/<br>DECLARE @tbl TABLE(<br>RowID INT IDENTITY(1, 1),<br>CompanyName VARCHAR(100),<br>ContactName VARCHAR(50))<br>/<em>Local variables </em>/<br>DECLARE @ContName VARCHAR(100),<br>@CompName VARCHAR(50),<br>@count int, /<em>create local @@fetch_status</em>/<br>@iRow int /<em>row pointer (index)</em>/<br>/<em> create array simulator </em>/<br>INSERT @tbl<br>SELECT CompanyName, ContactName<br>FROM Suppliers<br>WHERE ContactName LIKE ‘c%’<br>/<em>get array Upper Bound (highest ID number)</em>/<br>SET @count = @@ROWCOUNT<br>/<em>initialize index counter</em>/<br>SET @iRow = 1<br>/<em>establish loop structure</em>/<br>WHILE @iRow _</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2006/02/22/2006-02-22-array-in-sql-server-2000/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/14/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/16/">Next &raquo;</a>
@@ -861,14 +859,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
               </li>
              
@@ -878,6 +868,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -894,6 +892,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Trace Flags</a>
               </li>
              
               <li class="article-tag-list-item">

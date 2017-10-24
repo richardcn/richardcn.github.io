@@ -141,6 +141,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2014-08-20-generate-sql-script-to-restore-all-transaction-logs-after-last-database-backup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2251" target="_blank" itemprop="url">Generate SQL Script to Restore all Transaction Logs After Last Database Backup</a>
+  </h1>
+
+        
+        <a href="/2014/08/20/2014-08-20-generate-sql-script-to-restore-all-transaction-logs-after-last-database-backup/" class="archive-article-date">
+  	<time datetime="2014-08-21T00:54:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>If you have to reinitialize the log shipping for a database which is doing log backup every 5 minutes, there are probably piles of log backup files need to be restored after restoring database backup nightly. A little bit crazy if you have to manually go through all files. This is a helpful script to generate the SQL script for you to do all the log restoral.</p>
+<pre><code>&lt;span class=&quot;kwrd&quot;&gt;SELECT&lt;/span&gt;  &lt;span class=&quot;str&quot;&gt;&apos;RESTORE LOG [&apos;&lt;/span&gt; + database_name + &lt;span class=&quot;str&quot;&gt;&apos;] FROM DISK=&apos;&lt;/span&gt;&lt;span class=&quot;str&quot;&gt;&apos;&apos;&lt;/span&gt;
+        + physical_device_name + &lt;span class=&quot;str&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;str&quot;&gt;&apos; WITH NORECOVERY&apos;&lt;/span&gt;
+&lt;span class=&quot;kwrd&quot;&gt;FROM&lt;/span&gt;    msdb.dbo.backupset a
+        &lt;span class=&quot;kwrd&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;JOIN&lt;/span&gt; msdb.dbo.backupmediafamily b &lt;span class=&quot;kwrd&quot;&gt;ON&lt;/span&gt; a.media_set_id = b.media_set_id
+&lt;span class=&quot;kwrd&quot;&gt;WHERE&lt;/span&gt;   database_name = &lt;span class=&quot;str&quot;&gt;&apos;laFileStore&apos;&lt;/span&gt;
+        &lt;span class=&quot;kwrd&quot;&gt;AND&lt;/span&gt; type = &lt;span class=&quot;str&quot;&gt;&apos;L&apos;&lt;/span&gt;
+        &lt;span class=&quot;kwrd&quot;&gt;AND&lt;/span&gt; backup_start_date &gt;= ( &lt;span class=&quot;kwrd&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;TOP&lt;/span&gt; 1
+                                            backup_start_date
+                                   &lt;span class=&quot;kwrd&quot;&gt;FROM&lt;/span&gt;     msdb.dbo.backupset
+                                   &lt;span class=&quot;kwrd&quot;&gt;WHERE&lt;/span&gt;    database_name = &lt;span class=&quot;str&quot;&gt;&apos;laFileStore&apos;&lt;/span&gt;
+                                            &lt;span class=&quot;kwrd&quot;&gt;AND&lt;/span&gt; type = &lt;span class=&quot;str&quot;&gt;&apos;D&apos;&lt;/span&gt;
+                                   &lt;span class=&quot;kwrd&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;BY&lt;/span&gt; backup_start_date &lt;span class=&quot;kwrd&quot;&gt;DESC&lt;/span&gt;
+                                 )
+&lt;span class=&quot;kwrd&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;BY&lt;/span&gt; a.backup_start_date 
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL//" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/08/20/2014-08-20-generate-sql-script-to-restore-all-transaction-logs-after-last-database-backup/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2014-04-25-uselegacyv2runtimeactivationpolicy-fix-for-crystal-report-on-net-framework-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -872,95 +962,6 @@
 
 
   
-    <article id="post-2014-02-26-html5-site-with-iis-and-ie-docmode-for-web-standards-issues" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1971" target="_blank" itemprop="url">HTML5 site with IIS and IE docmode for web standards issues</a>
-  </h1>
-
-        
-        <a href="/2014/02/26/2014-02-26-html5-site-with-iis-and-ie-docmode-for-web-standards-issues/" class="archive-article-date">
-  	<time datetime="2014-02-27T06:48:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Recently our developers are developing an HTML5 site with video content (MP4 videos). When doing development and debugging on developer’s workstation, the site worked perfectly well. But after deploying the site to IIS 7.5, issues kept coming out:</p>
-<p><strong>1) MP4 video was not showed on the page using any browsers.</strong></p>
-<p>After some investigations, it was MIME type missing issue. Have to add the MIME type for MP4.</p>
-<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/1.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/1_thumb.png" alt="1"></a></p>
-<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/2.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/2_thumb.png" alt="2"></a></p>
-<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/3.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/3_thumb.png" alt="3"></a></p>
-<p>After this, a new issue came up.</p>
-<p><strong>2) The HTML5 video tag is not working in IE10 while it works perfectly in Chrome and Firefox.</strong></p>
-<p>After some Bing/Google, we found out it is the IE10 docmode issue. Since our IIS test server is in intranet, <strong>IE 10 displays the intranet site in Compatibility View by default</strong>. This option in IE settings needs to be unchecked. There is an article on MSDN for <a href="http://msdn.microsoft.com/en-us/hh779632.aspx" target="_blank" rel="external">explaining the IE docmode issue</a>. And some good solutions on <a href="http://stackoverflow.com/questions/13284083/ie10-renders-in-ie7-mode-how-to-force-standards-mode" target="_blank" rel="external">Stackoverflow</a>.</p>
-<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/4.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/4_thumb.png" alt="4"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/HTML5//" class="article-tag-list-link color1">HTML5</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/HTML5/IE//" class="article-tag-list-link color3">IE</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/HTML5/IE/IIS7//" class="article-tag-list-link color5">IIS7</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/02/26/2014-02-26-html5-site-with-iis-and-ie-docmode-for-web-standards-issues/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1058,14 +1059,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
               </li>
              
@@ -1075,6 +1068,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1091,6 +1092,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Trace Flags</a>
               </li>
              
               <li class="article-tag-list-item">

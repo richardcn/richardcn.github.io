@@ -141,6 +141,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Most-Wanted-SQL-Server-Trace-Flags" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/23/Most-Wanted-SQL-Server-Trace-Flags/">Most Wanted SQL Server Trace Flags</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/23/Most-Wanted-SQL-Server-Trace-Flags/" class="archive-article-date">
+  	<time datetime="2017-10-24T00:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SQL Server trace flags are used to temporarily set specific server characteristics or to switch off a particular behavior. Here are <a href="https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql" target="_blank" rel="external">the long list of available trace flags</a> you can set. Following are some of the most wanted popular trace flags you might set for your SQL Server. I usually enable them when I setup a new SQL Server. But <strong>please test them out in test environment before applying to production servers!!!</strong></p>
+<p><strong>1117</strong>: When a file in the filegroup meets the autogrow threshold, all files in the filegroup grow. Scope: global only.</p>
+<p>Note: Starting with SQL Server 2016 this behavior is controlled by the AUTOGROW_SINGLE_FILE and AUTOGROW_ALL_FILES option of ALTER DATABASE, and trace flag 1117 has no affect. For more information, see ALTER DATABASE File and Filegroup Options (Transact-SQL).</p>
+<p><strong>1222</strong>: Returns the resources and types of locks that are participating in a deadlock and also the current command affected, in an XML format that does not comply with any XSD schema. Scope: global only. This is very useful for troubleshooting deadlocks.</p>
+<p><strong>2371</strong>: Changes the fixed auto update statistics threshold to dynamic auto update statistics threshold. For more information, see <a href="https://support.microsoft.com/en-us/help/2754171/controlling-autostat-auto-update-statistics-behavior-in-sql-server" target="_blank" rel="external">this Microsoft Support article</a>. Scope: global only.</p>
+<p>Note: Starting with SQL Server 2016 this behavior is controlled by the engine and trace flag 2371 has no effect.</p>
+<p><strong>3226</strong>: By default, every successful backup operation adds an entry in the SQL Server error log and in the system event log. If you create very frequent log backups, these success messages accumulate quickly, resulting in huge error logs in which finding other messages is problematic. With this trace flag, you can suppress these log entries. This is useful if you are running frequent log backups and if none of your scripts depend on those entries. Scope: global only.</p>
+<p><strong>4199</strong>: Enables query optimizer (QO) changes released in SQL Server Cumulative Updates and Service Packs. QO changes that are made to previous releases of SQL Server are enabled by default under the latest database compatibility level in a given product release, without trace flag 4199 enabled. Scope: global or session or query.</p>
+<p>To accomplish this at the database level, see the QUERY_OPTIMIZER_HOTFIXES option in ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL).</p>
+<p>Starting with SQL Server 2016 SP1, to accomplish this at the query level, add the USE HINT ‘ENABLE_QUERY_OPTIMIZER_HOTFIXES’ query hint instead of using this trace flag.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Trace Flags</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/23/Most-Wanted-SQL-Server-Trace-Flags/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Two-new-features-in-SQL-Server-Management-Studio-17-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -990,96 +1077,6 @@ GO
 
 
   
-    <article id="post-2014-08-20-generate-sql-script-to-restore-all-transaction-logs-after-last-database-backup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=2251" target="_blank" itemprop="url">Generate SQL Script to Restore all Transaction Logs After Last Database Backup</a>
-  </h1>
-
-        
-        <a href="/2014/08/20/2014-08-20-generate-sql-script-to-restore-all-transaction-logs-after-last-database-backup/" class="archive-article-date">
-  	<time datetime="2014-08-21T00:54:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you have to reinitialize the log shipping for a database which is doing log backup every 5 minutes, there are probably piles of log backup files need to be restored after restoring database backup nightly. A little bit crazy if you have to manually go through all files. This is a helpful script to generate the SQL script for you to do all the log restoral.</p>
-<pre><code>&lt;span class=&quot;kwrd&quot;&gt;SELECT&lt;/span&gt;  &lt;span class=&quot;str&quot;&gt;&apos;RESTORE LOG [&apos;&lt;/span&gt; + database_name + &lt;span class=&quot;str&quot;&gt;&apos;] FROM DISK=&apos;&lt;/span&gt;&lt;span class=&quot;str&quot;&gt;&apos;&apos;&lt;/span&gt;
-        + physical_device_name + &lt;span class=&quot;str&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;str&quot;&gt;&apos; WITH NORECOVERY&apos;&lt;/span&gt;
-&lt;span class=&quot;kwrd&quot;&gt;FROM&lt;/span&gt;    msdb.dbo.backupset a
-        &lt;span class=&quot;kwrd&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;JOIN&lt;/span&gt; msdb.dbo.backupmediafamily b &lt;span class=&quot;kwrd&quot;&gt;ON&lt;/span&gt; a.media_set_id = b.media_set_id
-&lt;span class=&quot;kwrd&quot;&gt;WHERE&lt;/span&gt;   database_name = &lt;span class=&quot;str&quot;&gt;&apos;laFileStore&apos;&lt;/span&gt;
-        &lt;span class=&quot;kwrd&quot;&gt;AND&lt;/span&gt; type = &lt;span class=&quot;str&quot;&gt;&apos;L&apos;&lt;/span&gt;
-        &lt;span class=&quot;kwrd&quot;&gt;AND&lt;/span&gt; backup_start_date &gt;= ( &lt;span class=&quot;kwrd&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;TOP&lt;/span&gt; 1
-                                            backup_start_date
-                                   &lt;span class=&quot;kwrd&quot;&gt;FROM&lt;/span&gt;     msdb.dbo.backupset
-                                   &lt;span class=&quot;kwrd&quot;&gt;WHERE&lt;/span&gt;    database_name = &lt;span class=&quot;str&quot;&gt;&apos;laFileStore&apos;&lt;/span&gt;
-                                            &lt;span class=&quot;kwrd&quot;&gt;AND&lt;/span&gt; type = &lt;span class=&quot;str&quot;&gt;&apos;D&apos;&lt;/span&gt;
-                                   &lt;span class=&quot;kwrd&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;BY&lt;/span&gt; backup_start_date &lt;span class=&quot;kwrd&quot;&gt;DESC&lt;/span&gt;
-                                 )
-&lt;span class=&quot;kwrd&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kwrd&quot;&gt;BY&lt;/span&gt; a.backup_start_date 
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL//" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/08/20/2014-08-20-generate-sql-script-to-restore-all-transaction-logs-after-last-database-backup/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1177,14 +1174,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
               </li>
              
@@ -1194,6 +1183,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,6 +1207,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Trace Flags</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -141,6 +141,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2014-02-26-html5-site-with-iis-and-ie-docmode-for-web-standards-issues" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1971" target="_blank" itemprop="url">HTML5 site with IIS and IE docmode for web standards issues</a>
+  </h1>
+
+        
+        <a href="/2014/02/26/2014-02-26-html5-site-with-iis-and-ie-docmode-for-web-standards-issues/" class="archive-article-date">
+  	<time datetime="2014-02-27T06:48:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Recently our developers are developing an HTML5 site with video content (MP4 videos). When doing development and debugging on developer’s workstation, the site worked perfectly well. But after deploying the site to IIS 7.5, issues kept coming out:</p>
+<p><strong>1) MP4 video was not showed on the page using any browsers.</strong></p>
+<p>After some investigations, it was MIME type missing issue. Have to add the MIME type for MP4.</p>
+<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/1.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/1_thumb.png" alt="1"></a></p>
+<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/2.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/2_thumb.png" alt="2"></a></p>
+<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/3.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/3_thumb.png" alt="3"></a></p>
+<p>After this, a new issue came up.</p>
+<p><strong>2) The HTML5 video tag is not working in IE10 while it works perfectly in Chrome and Firefox.</strong></p>
+<p>After some Bing/Google, we found out it is the IE10 docmode issue. Since our IIS test server is in intranet, <strong>IE 10 displays the intranet site in Compatibility View by default</strong>. This option in IE settings needs to be unchecked. There is an article on MSDN for <a href="http://msdn.microsoft.com/en-us/hh779632.aspx" target="_blank" rel="external">explaining the IE docmode issue</a>. And some good solutions on <a href="http://stackoverflow.com/questions/13284083/ie10-renders-in-ie7-mode-how-to-force-standards-mode" target="_blank" rel="external">Stackoverflow</a>.</p>
+<p><a href="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/4.png" target="_blank" rel="external"><img src="http://chenz.azurewebsites.net/wp-content/uploads/2014/02/4_thumb.png" alt="4"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/HTML5//" class="article-tag-list-link color1">HTML5</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/HTML5/IE//" class="article-tag-list-link color3">IE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/HTML5/IE/IIS7//" class="article-tag-list-link color5">IIS7</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/02/26/2014-02-26-html5-site-with-iis-and-ie-docmode-for-web-standards-issues/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2014-02-26-create-symbolic-linkjunction-on-windows-servers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -828,85 +917,6 @@
 
 
   
-    <article id="post-2013-10-10-how-to-check-if-string-contains-lower-case-letter-or-upper-case-letter-using-t-sql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1561" target="_blank" itemprop="url">How to check if string contains lower case letter or upper case letter using T-SQL</a>
-  </h1>
-
-        
-        <a href="/2013/10/10/2013-10-10-how-to-check-if-string-contains-lower-case-letter-or-upper-case-letter-using-t-sql/" class="archive-article-date">
-  	<time datetime="2013-10-11T06:10:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>We are using upper case letters in the customer account numbers. But sometimes there are some human errors inputting the lower case in the account numbers. How can we identify them using T-SQL? It is quite simple. Just use the COLLATE Latin1_General_CS_AI criteria for the string comparison:</p>
-<pre><code>&lt;span style=&quot;color: #606060&quot; id=&quot;lnum1&quot;&gt;   1:&lt;/span&gt; &lt;span style=&quot;color: #0000ff&quot;&gt;SELECT&lt;/span&gt; AccountNumber &lt;span style=&quot;color: #0000ff&quot;&gt;FROM&lt;/span&gt; Customer 
-
-&lt;span style=&quot;color: #606060&quot; id=&quot;lnum2&quot;&gt;   2:&lt;/span&gt; &lt;span style=&quot;color: #0000ff&quot;&gt;WHERE&lt;/span&gt; AccountNumber != &lt;span style=&quot;color: #0000ff&quot;&gt;UPPER&lt;/span&gt;(AccountNumber) &lt;span style=&quot;color: #0000ff&quot;&gt;COLLATE&lt;/span&gt; Latin1_General_CS_AI
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL//" class="article-tag-list-link color4">SQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/10/10/2013-10-10-how-to-check-if-string-contains-lower-case-letter-or-upper-case-letter-using-t-sql/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1004,14 +1014,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
               </li>
              
@@ -1021,6 +1023,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1037,6 +1047,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Trace Flags</a>
               </li>
              
               <li class="article-tag-list-item">

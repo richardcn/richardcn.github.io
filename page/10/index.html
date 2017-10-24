@@ -141,6 +141,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2008-07-16-powershell-scripts-to-check-sql-database-servers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=40" target="_blank" itemprop="url">PowerShell Scripts to check SQL Database servers</a>
+  </h1>
+
+        
+        <a href="/2008/07/16/2008-07-16-powershell-scripts-to-check-sql-database-servers/" class="archive-article-date">
+  	<time datetime="2008-07-17T03:37:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I have four production database servers to manage. They are all SQL 2005 Server. Sometimes I need to know the name, owner, size, available space of all the DBs on each server. I create this little PowerShell scripts to do that instead of opening up all the servers in SQL Server Management Studio. </p>
+<blockquote>[reflection.assembly]::LoadWithPartialName(“Microsoft.SqlServer.Smo”) | out-null<br>$SqlConnection = New-Object System.Data.SqlClient.SqlConnection<br>$computers = get-content “DBServers.txt”<br>$OutFile = “DBServerInfo.txt”<br>$Line = “Production Databases information”<br>$Line | out-file $OutFile<br>foreach ($computer in $computers)<br>{<br>$Line = “<code>r</code>n———————————–”<br>$Line | out-file $OutFile -append<br>$Line = “Working on “ + $computer<br>write-host $Line<br>$Server = new-object (“Microsoft.SqlServer.Management.Smo.Server”) “$computer”<br>$Line = “Server :” + $computer + “ (Version: “ + $Server.Information.VersionString + “)<code>r</code>n———————————–”<br>$Line | Out-File $OutFile -append<br><br>$Server.databases | select name,owner,@{Name=”Size(MB)”;Expression={“{0,8:0.00}” -f $<em>.size}},`<br>@{Name=”Available Space(MB)”;Expression={“{0,8:0.00}” -f ($</em>.SpaceAvailable/1024)}}`<br>| Format-Table -auto | Out-File $OutFile -append<br>}<br><br>write-host “Output File Created: .” $OutFile</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PowerShell//" class="article-tag-list-link color1">PowerShell</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2008/07/16/2008-07-16-powershell-scripts-to-check-sql-database-servers/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2008-07-11-wmi-classes-links" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -815,125 +888,6 @@ Check Digit = 1 (110 minus 109)
 
 
   
-    <article id="post-2008-04-02-credit-card-validation-check-digits" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=45" target="_blank" itemprop="url">Credit Card Validation - Check Digits</a>
-  </h1>
-
-        
-        <a href="/2008/04/02/2008-04-02-credit-card-validation-check-digits/" class="archive-article-date">
-  	<time datetime="2008-04-03T03:22:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-04-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://www.beachnet.com/~hstiles/cardtype.html" target="_blank" rel="external">_<em>(original document)</em> _</a></p>
-<p> This document outlines procedures and algorithms for Verifying the accuracy and validity of credit card numbers. Most credit card numbers are encoded with a “Check Digit”. A check digit is a digit added to a number (either at the end or the beginning) that validates the authenticity of the number. A simple algorithm is applied to the other digits of the number which yields the check digit. By running the algorithm, and comparing the check digit you get from the algorithm with the check digit encoded with the credit card number, you can verify that you have correctly read all of the digits and that they make a valid combination. </p>
-<p>Possible uses for this information: </p>
-<ul>
-<li><p>When a user has keyed in a credit card number (or scanned it) and you want to validate it before sending it our for debit authorization. </p>
-</li>
-<li><p>When issuing cards, say an affinity card, you might want to add a check digit using the MOD 10 method. </p>
-</li>
-</ul>
-<h2 id="1-Prefix-Length-and-Check-Digit-Criteria"><a href="#1-Prefix-Length-and-Check-Digit-Criteria" class="headerlink" title="1.Prefix, Length, and Check Digit Criteria"></a>1.Prefix, Length, and Check Digit Criteria</h2><p>Here is a table outlining the major credit cards that you might want to validate. </p>
-<table border="2"><br><tbody><br><tr><br><br><td width="148" valign="bottom"><strong>CARD TYPE</strong><br><br></td><td width="86" valign="bottom"><strong>Prefix</strong><br><br></td><td width="78" valign="bottom"><strong>Length</strong><br><br></td><td width="120" valign="bottom"><strong>Check digit algorithm</strong><br></td></tr><tr><br><br><td width="148">MASTERCARD<br><br></td><td width="86">51-55<br><br></td><td width="78">16<br><br></td><td width="120">mod 10<br></td></tr><tr><br><br><td width="148">VISA<br><br></td><td width="86">4<br><br></td><td width="78">13, 16<br><br></td><td width="120">mod 10<br></td></tr><tr><br><br><td width="148">AMEX<br><br></td><td width="86">34<br>37<br><br></td><td width="78">15<br><br></td><td width="120">mod 10<br></td></tr><tr><br><br><td width="148">Diners Club/<br>Carte Blanche<br><br></td><td width="86">300-305<br>36<br>38<br><br></td><td width="78">14<br><br></td><td width="120">mod 10<br></td></tr><tr><br><br><td width="148">Discover<br><br></td><td width="86">6011<br><br></td><td width="78">16<br><br></td><td width="120">mod 10<br></td></tr><tr><br><br><td width="148">enRoute<br><br></td><td width="86">2014<br>2149<br><br></td><td width="78">15<br><br></td><td width="120">any<br></td></tr><tr><br><br><td width="148">JCB<br><br></td><td width="86">3<br><br></td><td width="78">16<br><br></td><td width="120">mod 10<br></td></tr><tr><br><br><td width="148">JCB<br><br></td><td width="86">2131<br>1800<br><br></td><td width="78">15<br><br></td><td width="120">mod 10<br></td></tr><br><br><br><br></tbody></table>
-
-
-<h2 id="2-LUHN-Formula-Mod-10-for-Validation-of-Primary-Account-Number"><a href="#2-LUHN-Formula-Mod-10-for-Validation-of-Primary-Account-Number" class="headerlink" title="2. LUHN Formula (Mod 10) for Validation of Primary Account Number"></a>2. LUHN Formula (Mod 10) for Validation of Primary Account Number</h2><p>The following steps are required to validate the primary account number:  </p>
-<p><strong>Step 1:</strong> Double the value of alternate digits of the primary account number beginning with the second digit from the right (the first right–hand digit is the check digit.) </p>
-<p><strong>Step 2:</strong> Add the individual digits comprising the products obtained in Step 1 to each of the unaffected digits in the original number. </p>
-<p><strong>Step 3:</strong> The total obtained in Step 2 must be a number ending in zero (30, 40, 50, etc.) for the account number to be validated. </p>
-<p><strong>For example</strong>, to validate the primary account number <em>49927398716:</em> </p>
-<p><strong>Step 1:</strong></p>
-<pre><code>&lt;font size=&quot;2&quot;&gt; 4 9 9 2 7 3 9 8 7 1 6
- x2 x2 x2 x2 x2 
-------------------------------
- 18 4 6 16 2
-
-
-
-&lt;/font&gt;
-</code></pre><p><strong>Step 2:</strong> 4 +(1+8)+ 9 + (4) + 7 + (6) + 9 +(1+6) + 7 + (2) + 6 </p>
-<p><strong>Step 3:</strong> Sum = 70 : Card number is validated </p>
-<p><strong>Note:</strong> Card is valid because the 70/10 yields no remainder. </p>
-<p>The great folks at <a href="http://www.icverify.com/" target="_blank" rel="external">_IC_VERIFY__</a> are the original source of this data, I only formatted it in HTML. </p>
-<p>If you are in the market, I wrote a set of <em><strong>FoxPro</strong></em> modules for Windows/Dos that interface nicely with IC<em>VERIFY</em> in a multi-user LAN setup. You just set up <a href="http://www.icverify.com/" target="_blank" rel="external">_IC_VERIFY__</a> on a single station, and all stations on the LAN can authorize credit cards with a single FOXBASE function call. Of course, you have to license IC_VERIFY _by the node, but it is very reasonable. I also wrote a couple of simple functions to perform pre-authorization, card screening, etc. </p>
-<p>Here is <a href="http://www.beachnet.com/~hstiles/bin/luhn.zip" target="_blank" rel="external"><em>a Microsoft Excel worksheet</em></a> that will validate a number for you (useful for understanding the algorithm, it is in a .ZIP compressed format) </p>
-<p>Horace Vallas made a NeoWebScript (Tcl really) procedure that implements it.<br>Check it out at <a href="https://enterprise.neosoft.com/secureforms/hav/" target="_blank" rel="external"><em>https://enterprise.neosoft.com/secureforms/hav/ </em></a></p>
-<p>Because I get at least a letter a week regarding this routine, here are some additional helpful notes: </p>
-<p>Make sure that you: </p>
-<ol>
-<li><p>have started with the rightmost digit (including the check digit) (figure odd and even based upon the rightmost digit being odd, regardless of the length of the Credit Card.) ALWAYS work right to left. </p>
-</li>
-<li><p>the check digit counts as digit #1 (assuming that the rightmost digit is the check digit) and is not doubled </p>
-</li>
-<li><p>double every second digit (starting with digit # 2 from the right) </p>
-</li>
-<li><p>remember that when you double a number over 4, (6 for example) you don’t add the result to your total, but rather the sum of the digits of the result (in the above example 6*2=12 so you would add 1+2 to your total (not 12). </p>
-</li>
-<li><p>always include the Visa or M/C/ prefix. </p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Algorithm//" class="article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2008/04/02/2008-04-02-credit-card-validation-check-digits/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
@@ -1031,14 +985,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
               </li>
              
@@ -1048,6 +994,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1064,6 +1018,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Trace Flags</a>
               </li>
              
               <li class="article-tag-list-item">

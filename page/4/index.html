@@ -141,6 +141,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2013-10-10-how-to-check-if-string-contains-lower-case-letter-or-upper-case-letter-using-t-sql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=1561" target="_blank" itemprop="url">How to check if string contains lower case letter or upper case letter using T-SQL</a>
+  </h1>
+
+        
+        <a href="/2013/10/10/2013-10-10-how-to-check-if-string-contains-lower-case-letter-or-upper-case-letter-using-t-sql/" class="archive-article-date">
+  	<time datetime="2013-10-11T06:10:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>We are using upper case letters in the customer account numbers. But sometimes there are some human errors inputting the lower case in the account numbers. How can we identify them using T-SQL? It is quite simple. Just use the COLLATE Latin1_General_CS_AI criteria for the string comparison:</p>
+<pre><code>&lt;span style=&quot;color: #606060&quot; id=&quot;lnum1&quot;&gt;   1:&lt;/span&gt; &lt;span style=&quot;color: #0000ff&quot;&gt;SELECT&lt;/span&gt; AccountNumber &lt;span style=&quot;color: #0000ff&quot;&gt;FROM&lt;/span&gt; Customer 
+
+&lt;span style=&quot;color: #606060&quot; id=&quot;lnum2&quot;&gt;   2:&lt;/span&gt; &lt;span style=&quot;color: #0000ff&quot;&gt;WHERE&lt;/span&gt; AccountNumber != &lt;span style=&quot;color: #0000ff&quot;&gt;UPPER&lt;/span&gt;(AccountNumber) &lt;span style=&quot;color: #0000ff&quot;&gt;COLLATE&lt;/span&gt; Latin1_General_CS_AI
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL//" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/10/10/2013-10-10-how-to-check-if-string-contains-lower-case-letter-or-upper-case-letter-using-t-sql/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2013-10-09-which-sql-server-component-requires-sql-instance-restart" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -907,149 +986,6 @@
 
 
   
-    <article id="post-2013-05-30-make-the-file-share-work-on-a-dns-alias" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=101" target="_blank" itemprop="url">Make the file share work on a DNS alias</a>
-  </h1>
-
-        
-        <a href="/2013/05/30/2013-05-30-make-the-file-share-work-on-a-dns-alias/" class="archive-article-date">
-  	<time datetime="2013-05-31T04:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-05-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="A-note-for-myself-from-this-awesome-post"><a href="#A-note-for-myself-from-this-awesome-post" class="headerlink" title="A note for myself from this awesome post."></a>A note for myself from this awesome <a href="http://serverfault.com/questions/23823/how-to-configure-windows-machine-to-allow-file-sharing-with-dns-alias" target="_blank" rel="external">post</a>.</h3><h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><ol>
-<li>The Problem  </li>
-<li>The Solution  <ul>
-<li>Allowing other machines to use filesharing via the DNS Alias (DisableStrictNameChecking)  </li>
-<li>Allowing server machine to use filesharing with itself via the DNS Alias (BackConnectionHostNames)  </li>
-<li>Providing browse capabilities for multiple NetBIOS names (OptionalNames)  </li>
-<li>Register the Kerberos service principal names (SPNs) for other Windows functions like Printing (setspn)</li>
-</ul>
-</li>
-<li>References</li>
-</ol>
-<h3 id="1-The-Problem"><a href="#1-The-Problem" class="headerlink" title="1. The Problem"></a>1. The Problem</h3><p>On Windows machines, file sharing <em>can</em> work via the computer name, with or without full qualification, or by the IP Address. By default, however, filesharing <em>will not work</em> with arbitrary DNS aliases. To enable filesharing and other Windows services to work with DNS aliases, you must make registry changes as detailed below and reboot the machine. </p>
-<h3 id="2-The-Solution"><a href="#2-The-Solution" class="headerlink" title="2. The Solution"></a>2. The Solution</h3><h4 id="Allowing-other-machines-to-use-filesharing-via-the-DNS-Alias-DisableStrictNameChecking"><a href="#Allowing-other-machines-to-use-filesharing-via-the-DNS-Alias-DisableStrictNameChecking" class="headerlink" title="Allowing other machines to use filesharing via the DNS Alias (DisableStrictNameChecking)"></a>Allowing other machines to use filesharing via the DNS Alias (DisableStrictNameChecking)</h4><p>This change alone will allow other machines on the network to connect to the machine using any arbitrary hostname. (However this change will not allow a machine to connect to <em>itself</em> via a hostname, see BackConnectionHostNames below). </p>
-<ul>
-<li><p>Edit the registry key <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\parameters</code> and add a value <code>DisableStrictNameChecking</code> of type DWORD set to 1.</p>
-</li>
-<li><p>Edit the registry key (on 2008 R2) <code>HKLM\SYSTEM\CurrentControlSet\Control\Print</code> and add a value <code>DnsOnWire</code> of type DWORD set to 1</p>
-</li>
-</ul>
-<h4 id="Allowing-server-machine-to-use-filesharing-with-itself-via-the-DNS-Alias-BackConnectionHostNames"><a href="#Allowing-server-machine-to-use-filesharing-with-itself-via-the-DNS-Alias-BackConnectionHostNames" class="headerlink" title="Allowing server machine to use filesharing with itself via the DNS Alias (BackConnectionHostNames)"></a>Allowing server machine to use filesharing with itself via the DNS Alias (BackConnectionHostNames)</h4><p>This change is necessary for a DNS alias to work with filesharing from a machine to find itself. This creates the Local Security Authority host names that can be referenced in an NTLM authentication request. </p>
-<p>To do this, follow these steps for all the nodes on the client computer: </p>
-<ol>
-<li>To the registry subkey <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0</code>, add new Multi-String Value <code>BackConnectionHostNames</code></li>
-<li>In the Value data box, type the CNAME or the DNS alias, that is used for the local shares on the computer, and then click OK.  <ul>
-<li>Note: Type each host name on a separate line. </li>
-</ul>
-</li>
-</ol>
-<h4 id="Providing-browse-capabilities-for-multiple-NetBIOS-names-OptionalNames"><a href="#Providing-browse-capabilities-for-multiple-NetBIOS-names-OptionalNames" class="headerlink" title="Providing browse capabilities for multiple NetBIOS names (OptionalNames)"></a>Providing browse capabilities for multiple NetBIOS names (OptionalNames)</h4><p>Allows ability to see the network alias in the network browse list. </p>
-<ol>
-<li>Edit the registry key <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\parameters</code> and add a value <code>OptionalNames</code> of type Multi-String  </li>
-<li>Add in a newline delimited list of names that should be registered under the NetBIOS browse entries  <ul>
-<li>Names should match NetBIOS conventions (i.e. not FQDN, just hostname)</li>
-</ul>
-</li>
-</ol>
-<h4 id="Register-the-Kerberos-service-principal-names-SPNs-for-other-Windows-functions-like-Printing-setspn"><a href="#Register-the-Kerberos-service-principal-names-SPNs-for-other-Windows-functions-like-Printing-setspn" class="headerlink" title="Register the Kerberos service principal names (SPNs) for other Windows functions like Printing (setspn)"></a>Register the Kerberos service principal names (SPNs) for other Windows functions like Printing (setspn)</h4><p>NOTE: Should not need to do this for basic functions to work, documented here for completeness. We had one situation in which the DNS alias was not working because there was an old SPN record interfering, so if other steps aren’t working check if there are any stray SPN records. </p>
-<p>You must register the Kerberos service principal names (SPNs), the host name, and the fully-qualified domain name (FQDN) for all the new DNS alias (CNAME) records. If you do not do this, a Kerberos ticket request for a DNS alias (CNAME) record may fail and return the error code <code>KDC_ERR_S_SPRINCIPAL_UNKNOWN</code>. </p>
-<p>To view the Kerberos SPNs for the new DNS alias records, use the Setspn command-line tool (<code>setspn.exe</code>). The Setspn tool is included in Windows Server 2003 Support Tools. You can install Windows Server 2003 Support Tools from the Support\Tools folder of the Windows Server 2003 startup disk. </p>
-<p>How to use the tool to list all records for a computername:</p>
-<pre><code>&lt;code&gt;setspn -L computername&lt;br&gt;&lt;/code&gt;
-</code></pre><p>To register the SPN for the DNS alias (CNAME) records, use the Setspn tool with the following syntax:</p>
-<pre><code>&lt;code&gt;setspn -A host/your_ALIAS_name computername&lt;br&gt;setspn -A host/your_ALIAS_name.company.com computername&lt;br&gt;&lt;/code&gt;
-</code></pre><h3 id="3-References"><a href="#3-References" class="headerlink" title="3. References"></a>3. References</h3><p>All the Microsoft references work via: <a href="http://support.microsoft.com/kb/" target="_blank" rel="external">http://support.microsoft.com/kb/</a>  </p>
-<ol>
-<li>Connecting to SMB share on a Windows 2000-based computer or a Windows Server 2003-based computer may not work with an alias name   </li>
-</ol>
-<pre><code>* Covers the basics of making file sharing work properly with DNS alias records from other computers to the server computer.   
-
-* KB281308
-</code></pre><ol>
-<li>Error message when you try to access a server locally by using its FQDN or its CNAME alias after you install Windows Server 2003 Service Pack 1: “Access denied” or “No network provider accepted the given network path”   </li>
-</ol>
-<pre><code>* Covers how to make the DNS alias work with file sharing from the file server itself.   
-
-* KB926642
-</code></pre><ol>
-<li>How to consolidate print servers by using DNS alias (CNAME) records in Windows Server 2003 and in Windows 2000 Server   </li>
-</ol>
-<pre><code>* Covers more complex scenarios in which records in Active Directory may need to be updated for certain services to work properly and for browsing for such services to work properly, how to register the Kerberos service principal names (SPNs).   
-
-* KB870911
-</code></pre><ol>
-<li>Distributed File System update to support consolidation roots in Windows Server 2003   </li>
-</ol>
-<pre><code>* Covers even more complex scenarios with DFS (discusses OptionalNames).   
-
-* KB829885
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Windows-Server//" class="article-tag-list-link color5">Windows Server</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Windows-Server/Windows-Server-2008-R2//" class="article-tag-list-link color3">Windows Server 2008 R2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/05/30/2013-05-30-make-the-file-share-work-on-a-dns-alias/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1147,14 +1083,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
               </li>
              
@@ -1164,6 +1092,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1180,6 +1116,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Trace Flags</a>
               </li>
              
               <li class="article-tag-list-item">

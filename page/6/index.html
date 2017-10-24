@@ -141,6 +141,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2012-08-01-how-to-drop-a-database-with-publication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=201" target="_blank" itemprop="url">How to drop a database with publication</a>
+  </h1>
+
+        
+        <a href="/2012/08/01/2012-08-01-how-to-drop-a-database-with-publication/" class="archive-article-date">
+  	<time datetime="2012-08-02T01:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I got a database on a log shipping subscriber server which I want to drop it. But the publisher database has some active publications. SQL Server doesn’t allow you to drop it directly because it thinks it has replications going on. So the way to drop it is putting the database into Offline mode first. Then you should be able to drop it. (NOTE: PLEASE ALWAYS MAKE SURE YOU HAVE A BACKUP BEFORE DROPPING ANY DATABASE!!!)  </p>
+<p><strong>ALTER DATABASE MyDB SET OFFLINE;</strong>  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL//" class="article-tag-list-link color4">SQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/SQL-Server//" class="article-tag-list-link color1">SQL Server</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SQL/SQL-Server/SQL-Server-2005-64bit//" class="article-tag-list-link color2">SQL Server 2005 64bit</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/08/01/2012-08-01-how-to-drop-a-database-with-publication/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2012-07-26-call-soap-web-service-with-basic-authorization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -833,95 +914,6 @@
 
 
   
-    <article id="post-2010-04-07-windows-7-resource-kit-powershell-pack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=6" target="_blank" itemprop="url">Windows 7 Resource Kit PowerShell Pack</a>
-  </h1>
-
-        
-        <a href="/2010/04/07/2010-04-07-windows-7-resource-kit-powershell-pack/" class="archive-article-date">
-  	<time datetime="2010-04-08T00:19:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2010-04-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Download the PowerShell Pack from <a href="http://code.msdn.microsoft.com/PowerShellPack" target="_blank" rel="external">code.msdn.microsoft.com/PowerShellPack</a> - more than 650 scripts and functions divided into a number of PowerShell modules.  </p>
-<p>Windows 7 Resource Kit PowerShell Pack Modules: </p>
-<p><strong>WPK  
-</strong><em>Create rich UIs quickly and easily from Windows PowerShell</em></p>
-<p><strong>TaskScheduler  
-</strong><em>List, create or delete scheduled tasks</em></p>
-<p><strong>FileSystem  
-</strong><em>Monitor files and folders, check for duplicate files and disk space</em></p>
-<p><strong>IsePack  
-</strong><em>Shortcuts and add-ons to the PowerShell Integrated Scripting Environment</em></p>
-<p><strong>DotNet  
-</strong><em>Explore loaded types, find commands that can work with a type, and discover how to work with .NET and COM objects in PowerShell</em></p>
-<p><strong>PSImageTools</strong><br><em>Convert, rotate, scale, and crop images and get image metadata</em></p>
-<p><strong>PSRSS</strong><br><em>Scripts and functions for working with the FeedStore provider</em></p>
-<p><strong>PSSystemTools</strong><br><em>Get OS and hardware information</em></p>
-<p><strong>PSUserTools</strong><br><em>Get the users on a system, check for elevation, and start a process as an administrator</em></p>
-<p><strong>PSCodeGen</strong><br><em>Generate PowerShell scripts, C# code and P/Invoke</em></p>
-<p>To use any of the modules, you first need to import it.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PowerShell//" class="article-tag-list-link color1">PowerShell</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2010/04/07/2010-04-07-windows-7-resource-kit-powershell-pack/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1019,14 +1011,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
               </li>
              
@@ -1036,6 +1020,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1052,6 +1044,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Trace Flags</a>
               </li>
              
               <li class="article-tag-list-item">

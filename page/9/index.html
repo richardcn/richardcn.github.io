@@ -141,6 +141,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2008-11-07-the-future-of-c" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  <h1 itemprop="name">
+    <a class="article-title" href="http://chenz.azurewebsites.net/?p=26" target="_blank" itemprop="url">The future of C#</a>
+  </h1>
+
+        
+        <a href="/2008/11/07/2008-11-07-the-future-of-c/" class="archive-article-date">
+  	<time datetime="2008-11-08T07:42:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I just got chance to watch Anders Hejlsberg’s PDC2008 session talk - “<a href="http://channel9.msdn.com/pdc2008/TL16/" target="_blank" rel="external">The Future of C#</a>”. I’m so excited about some of the changes in future C# 4.0. The demos are also so impressive.</p>
+<ul>
+<li><strong>Dynamically Typed Objects</strong>: This is really cool even the concept has been already there in JavaScript, Python etc. You know, C# is always a strong-typed language. But C# 4.0 is gonna introduce “Dynamic”. Whenever you want to use an object whether it is COM, JavaScript or anything, you just need to declare that object as “Dynamic”. Then the run-time environment will automatically bind to that object. No complicate wrapper codes needed any more. So does that mean I can declare everything as “Dynamic” and let it run? Cool…</li>
+<li><strong>Optional and Named Parameters</strong>: The pain in the neck with the Office integration will be gone forever. Those Type.missing matrix won’t show any more. We can dance with C# 4.0….</li>
+<li><strong>Compiler as Service</strong>: This feature is really fascinating. Anders’ demo means we can have another powerful shell – maybe call it “C# Shell”. Basically you can do whatever you want to do with this “C# Shell” since you can write any code to just run it, isn’t that cool? I think it absolutely is.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Coding//" class="article-tag-list-link color2">Coding</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2008/11/07/2008-11-07-the-future-of-c/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2008-11-03-enable-the-lock-pages-in-memory-option" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -808,79 +885,6 @@
 
 
   
-    <article id="post-2008-07-16-powershell-scripts-to-check-sql-database-servers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  <h1 itemprop="name">
-    <a class="article-title" href="http://chenz.azurewebsites.net/?p=40" target="_blank" itemprop="url">PowerShell Scripts to check SQL Database servers</a>
-  </h1>
-
-        
-        <a href="/2008/07/16/2008-07-16-powershell-scripts-to-check-sql-database-servers/" class="archive-article-date">
-  	<time datetime="2008-07-17T03:37:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2008-07-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I have four production database servers to manage. They are all SQL 2005 Server. Sometimes I need to know the name, owner, size, available space of all the DBs on each server. I create this little PowerShell scripts to do that instead of opening up all the servers in SQL Server Management Studio. </p>
-<blockquote>[reflection.assembly]::LoadWithPartialName(“Microsoft.SqlServer.Smo”) | out-null<br>$SqlConnection = New-Object System.Data.SqlClient.SqlConnection<br>$computers = get-content “DBServers.txt”<br>$OutFile = “DBServerInfo.txt”<br>$Line = “Production Databases information”<br>$Line | out-file $OutFile<br>foreach ($computer in $computers)<br>{<br>$Line = “<code>r</code>n———————————–”<br>$Line | out-file $OutFile -append<br>$Line = “Working on “ + $computer<br>write-host $Line<br>$Server = new-object (“Microsoft.SqlServer.Management.Smo.Server”) “$computer”<br>$Line = “Server :” + $computer + “ (Version: “ + $Server.Information.VersionString + “)<code>r</code>n———————————–”<br>$Line | Out-File $OutFile -append<br><br>$Server.databases | select name,owner,@{Name=”Size(MB)”;Expression={“{0,8:0.00}” -f $<em>.size}},`<br>@{Name=”Available Space(MB)”;Expression={“{0,8:0.00}” -f ($</em>.SpaceAvailable/1024)}}`<br>| Format-Table -auto | Out-File $OutFile -append<br>}<br><br>write-host “Output File Created: .” $OutFile</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PowerShell//" class="article-tag-list-link color1">PowerShell</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2008/07/16/2008-07-16-powershell-scripts-to-check-sql-database-servers/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
@@ -978,14 +982,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ASPNET</a>
               </li>
              
@@ -995,6 +991,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VS2015</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Service Pack 2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1011,6 +1015,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Trace Flags</a>
               </li>
              
               <li class="article-tag-list-item">
